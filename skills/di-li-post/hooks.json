@@ -1,0 +1,183 @@
+{
+  "version": "1.0-di",
+  "note": "21 hook formulas, with examples in Design Industries' world: Atlassian, AI in the enterprise, licensing, Cloud migration, a 25-person Melbourne team. Line 1 of a LinkedIn post is the whole game - the feed truncates at roughly 210 characters on desktop and 140 on mobile before 'see more', so the hook has to survive alone. Every formula here has a template, a filled example, what it is for, and the way it usually gets ruined. The examples are illustrations of shape, not facts to reuse: every number in a real post has to be DI's own.",
+  "rules": [
+    "One idea per hook. If it needs a comma splice, it needs two posts.",
+    "Line 2 is not a hook, it is the payoff of line 1. Never waste it on setup.",
+    "No question marks in line 1 unless the question is specific enough that only DI could ask it.",
+    "Numbers beat adjectives. '$42,000 in unused licences' beats 'a lot of waste' every time.",
+    "If the hook works with any other partner's name on it, it is not DI's hook.",
+    "Australian English. No em dash, anywhere, ever.",
+    "Clients are anonymous unless the receipt records approval for that post."
+  ],
+  "hooks": [
+    {
+      "id": 1,
+      "name": "Contrarian Take",
+      "template": "Everyone says {common advice}. After {specific experience}, I think that is wrong.",
+      "example": "Everyone says run the AI pilot for a quarter. We ran 20-hour ones for a year and every quarter-long pilot I saw was a delay with a budget code.",
+      "best_for": "Establishing a point of view. Highest comment rate of any formula. Michael's natural formula.",
+      "trap": "Being contrarian about something nobody believes. The belief has to be genuinely common in Australian enterprise IT."
+    },
+    {
+      "id": 2,
+      "name": "Number Reveal",
+      "template": "I {did thing} for {N} {days/weeks}. Here is what actually happened.",
+      "example": "We ran licence audits on 30 Atlassian estates in 12 months. 26 were paying for seats nobody had logged into since the year before.",
+      "best_for": "Experiments, audits, anything with a countable result across engagements.",
+      "trap": "Burying the number. Put it in line 1 or the formula does nothing."
+    },
+    {
+      "id": 3,
+      "name": "Mistake Confession",
+      "template": "{Specific cost} is what {one mistake} cost me.",
+      "example": "$18,000 is what one unread renewal notice cost a client of ours in March. We should have caught it.",
+      "best_for": "Trust. People forward the posts where you look bad. Works for DI because most partners never admit one.",
+      "trap": "A fake-humble mistake. 'We care too much about quality' reads as a brag and kills the post."
+    },
+    {
+      "id": 4,
+      "name": "Before / After",
+      "template": "{Time ago} I was {low state}. Today I {high state}. The difference was {one thing}.",
+      "example": "18 months ago our service desk answered tier-1 tickets by hand. Today Rovo answers the first 40 a day. One agent did it.",
+      "best_for": "Proof DI has travelled the distance the reader wants to travel.",
+      "trap": "Three-part transformations. Name one lever or the reader stops believing you."
+    },
+    {
+      "id": 5,
+      "name": "The List Promise",
+      "template": "{N} things I wish someone had told me before {milestone}.",
+      "example": "7 things I wish someone had told me before our first Data Center to Cloud migration.",
+      "best_for": "Saves. Highest save rate of the 21, which LinkedIn weights heavily. Natural DI page post.",
+      "trap": "N above 10. The reader does not believe you have 15 good ones, and you do not."
+    },
+    {
+      "id": 6,
+      "name": "Insider Secret",
+      "template": "After {N} years {doing thing}, here is the part nobody puts in the {job posting/course/pitch}.",
+      "example": "After 25 years delivering Atlassian, here is the part nobody puts in the migration proposal.",
+      "best_for": "Credentialed takes. Works only if the years are real, and DI's are.",
+      "trap": "Promising a secret and delivering common knowledge. The admins in the comments will say so."
+    },
+    {
+      "id": 7,
+      "name": "The Callout",
+      "template": "If you are still {doing outdated thing}, stop.",
+      "example": "If you are still buying Atlassian licences on the renewal notice without a last-login report, stop.",
+      "best_for": "Short posts with one instruction. Fastest to write of the 21.",
+      "trap": "Calling out something nobody does. Or worse, calling out your own audience with contempt."
+    },
+    {
+      "id": 8,
+      "name": "Question Trap",
+      "template": "{Specific scenario with a real cost}. What do you do?",
+      "example": "Your Atlassian renewal lands Friday, it is 30% up on last year, and the CFO wants it 10% down. Six days. What do you do?",
+      "best_for": "Comment volume. People answer scenarios, they ignore 'thoughts?'.",
+      "trap": "A question with an obvious right answer. There has to be a real fork."
+    },
+    {
+      "id": 9,
+      "name": "Story Cold Open",
+      "template": "\"{Line of dialogue}\"\\n\\n{Who said it, when, and why it mattered}.",
+      "example": "\"Can we just add 200 more licences and sort it out later?\"\\n\\nThat was the CIO of a listed group, on a Thursday, and later cost them $140,000.",
+      "best_for": "Long-form storytelling posts. Highest dwell time. Michael's second-best formula.",
+      "trap": "Dialogue nobody would actually say. Use the real line, including the ugly parts, with the client anonymised."
+    },
+    {
+      "id": 10,
+      "name": "The Receipt",
+      "template": "{Screenshot or hard number}. {One sentence of context}.",
+      "example": "4,000 seats, 11 months, zero weekend cutovers. Here is the migration plan that did it.",
+      "best_for": "Anything DI can prove. Pair with a Tejas tile and reach roughly doubles.",
+      "trap": "A receipt with no story attached. The number opens the door, the story is the room."
+    },
+    {
+      "id": 11,
+      "name": "Myth Bust",
+      "template": "{Popular explanation} is not why {bad outcome} is happening to you.",
+      "example": "Atlassian's pricing is not why your renewal went up 30%.",
+      "best_for": "Reframing. Sets you up to deliver the real cause in line 3.",
+      "trap": "Busting the myth and never naming the replacement. Always name it."
+    },
+    {
+      "id": 12,
+      "name": "The Comparison",
+      "template": "{Expensive option} vs {cheap option}. {Surprising verdict}.",
+      "example": "A $300,000 ITSM platform vs Jira Service Management and a fortnight of configuration. The fortnight won.",
+      "best_for": "Tool and process posts. Very high share rate.",
+      "trap": "An unfair comparison. Concede what the expensive option genuinely does better, and never name a competitor."
+    },
+    {
+      "id": 13,
+      "name": "Permission Slip",
+      "template": "You are allowed to {thing the reader feels guilty about}.",
+      "example": "You are allowed to switch off the Marketplace apps nobody has opened since 2023.",
+      "best_for": "Reach beyond the niche. These travel further than tactical posts.",
+      "trap": "Generic self-care. It has to be specific to the working life of an Atlassian platform owner."
+    },
+    {
+      "id": 14,
+      "name": "Pattern Interrupt",
+      "template": "{One word or three-word line, full stop.}",
+      "example": "We lost the tender.",
+      "best_for": "Stopping the scroll cold. Whitespace does the work.",
+      "trap": "Overuse. Once a month. Every post starting this way reads as a tic."
+    },
+    {
+      "id": 15,
+      "name": "The Warning",
+      "template": "{Common practice} is quietly costing you {specific thing they care about}.",
+      "example": "Your 'temporary' second Jira instance is quietly costing you a migration you have not budgeted for.",
+      "best_for": "Problem-aware audiences who have not connected cause to cost.",
+      "trap": "Fear with no exit. Give the fix in the same post or you have just made a platform owner anxious."
+    },
+    {
+      "id": 16,
+      "name": "Good vs Great",
+      "template": "Good {role} {do X}. Great {role} {do Y}.",
+      "example": "Good Atlassian admins answer the ticket. Great Atlassian admins write the automation rule so the ticket never arrives.",
+      "best_for": "Quotable one-liners. Screenshot bait. Natural DI page post.",
+      "trap": "A distinction that is really just 'try harder'. Y has to be a different action, not more effort."
+    },
+    {
+      "id": 17,
+      "name": "Time Anchor",
+      "template": "{Task} used to take me {long time}. It now takes {short time}.",
+      "example": "A licensing proposal used to take us 5 hours. It now takes 20 minutes.",
+      "best_for": "Tool, system and automation posts. The strongest hook shape for a how-to, and for anything Diai Foundry ships.",
+      "trap": "An unbelievable ratio. 5 hours to 20 minutes lands. 5 hours to 8 seconds does not."
+    },
+    {
+      "id": 18,
+      "name": "The Unpopular Rule",
+      "template": "I do not {widely accepted practice}. Ever. Here is why.",
+      "example": "We do not let a client enquiry go unanswered overnight. Ever. We call it the Sundown Rule.",
+      "best_for": "Positioning. Attracts the right clients by repelling the wrong ones. Explain the DI term in the same post.",
+      "trap": "A rule you break constantly. Someone in the comments will know."
+    },
+    {
+      "id": 19,
+      "name": "Curiosity Gap",
+      "template": "The {superlative} {thing} I ever {verb} {broke the obvious rule}.",
+      "example": "The best Cloud migration we ever ran started by deleting a third of the projects.",
+      "best_for": "Openers that force the 'see more' tap.",
+      "trap": "A gap you never close. Pay it off by line 4 or you have written clickbait."
+    },
+    {
+      "id": 20,
+      "name": "The Walk-Away",
+      "template": "I {fired/quit/deleted/cancelled} {valuable thing}. {Result}.",
+      "example": "We turned down a 2,000-seat migration in January. The client came back in June with the budget to do it properly.",
+      "best_for": "Values posts with a business result attached. Very high engagement.",
+      "trap": "Walking away with no cost. Name what it actually cost DI or it reads as theatre."
+    },
+    {
+      "id": 21,
+      "name": "The Direct Value",
+      "template": "Here is the exact {artifact} I used to {specific outcome}. Steal it.",
+      "example": "Here is the exact 4-question form we use before every AI Fast Start. Steal it.",
+      "best_for": "Lead magnets and comment-for-link posts. Highest conversion of the 21. Natural DI page teach post.",
+      "trap": "Making them ask for something you could have just posted. Give the artefact away in the post."
+    }
+  ]
+}

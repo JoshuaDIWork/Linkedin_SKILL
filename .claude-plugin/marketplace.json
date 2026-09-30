@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "di-linkedin-skill",
+  "description": "The Design Industries LinkedIn skill pack for Claude",
+  "owner": {
+    "name": "Design Industries",
+    "url": "https://di.net.au"
+  },
+  "plugins": [
+    {
+      "name": "di-linkedin",
+      "description": "Eleven Claude skills that run LinkedIn for Design Industries, including a humaniser that strips the AI fingerprint, enforces Australian English and DI house style, and scores the draft on a six-check panel.",
+      "source": "./",
+      "category": "productivity",
+      "homepage": "https://github.com/JoshuaDIWork/Linkedin_SKILL"
+    }
+  ]
+}

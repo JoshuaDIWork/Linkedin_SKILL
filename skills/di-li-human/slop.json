@@ -1,0 +1,2367 @@
+{
+  "version": "1.0-di",
+  "note": "Lexicon used by humanize.py and detect.py, tuned for Design Industries. Replacements are plain Australian English and keep the sentence grammatical. 'spelling' is the American-to-Australian pass, 'house' is DI's own banned and preferred phrasing, 'protected' is the list of Atlassian product names and DI terms no pass may touch. Edit freely - it is meant to be DI's.",
+  "invisible": [
+    {
+      "cp": "U+200B",
+      "name": "ZERO WIDTH SPACE",
+      "action": "delete"
+    },
+    {
+      "cp": "U+200C",
+      "name": "ZERO WIDTH NON-JOINER",
+      "action": "delete"
+    },
+    {
+      "cp": "U+200D",
+      "name": "ZERO WIDTH JOINER",
+      "action": "delete"
+    },
+    {
+      "cp": "U+2060",
+      "name": "WORD JOINER",
+      "action": "delete"
+    },
+    {
+      "cp": "U+FEFF",
+      "name": "ZERO WIDTH NO-BREAK SPACE / BOM",
+      "action": "delete"
+    },
+    {
+      "cp": "U+00AD",
+      "name": "SOFT HYPHEN",
+      "action": "delete"
+    },
+    {
+      "cp": "U+180E",
+      "name": "MONGOLIAN VOWEL SEPARATOR",
+      "action": "delete"
+    },
+    {
+      "cp": "U+061C",
+      "name": "ARABIC LETTER MARK",
+      "action": "delete"
+    },
+    {
+      "cp": "U+200E",
+      "name": "LEFT-TO-RIGHT MARK",
+      "action": "delete"
+    },
+    {
+      "cp": "U+200F",
+      "name": "RIGHT-TO-LEFT MARK",
+      "action": "delete"
+    },
+    {
+      "cp": "U+E0000-U+E007F",
+      "name": "TAG CHARACTERS (invisible ASCII smuggling)",
+      "action": "delete"
+    },
+    {
+      "cp": "U+00A0",
+      "name": "NO-BREAK SPACE",
+      "action": "space"
+    },
+    {
+      "cp": "U+202F",
+      "name": "NARROW NO-BREAK SPACE",
+      "action": "space"
+    },
+    {
+      "cp": "U+2009",
+      "name": "THIN SPACE",
+      "action": "space"
+    },
+    {
+      "cp": "U+2007",
+      "name": "FIGURE SPACE",
+      "action": "space"
+    },
+    {
+      "cp": "U+2003",
+      "name": "EM SPACE",
+      "action": "space"
+    },
+    {
+      "cp": "U+2002",
+      "name": "EN SPACE",
+      "action": "space"
+    }
+  ],
+  "typographic": [
+    {
+      "from": "—",
+      "name": "EM DASH",
+      "to": ", "
+    },
+    {
+      "from": "–",
+      "name": "EN DASH",
+      "to": "-"
+    },
+    {
+      "from": "‘",
+      "name": "LEFT SINGLE QUOTE",
+      "to": "'"
+    },
+    {
+      "from": "’",
+      "name": "RIGHT SINGLE QUOTE",
+      "to": "'"
+    },
+    {
+      "from": "“",
+      "name": "LEFT DOUBLE QUOTE",
+      "to": "\""
+    },
+    {
+      "from": "”",
+      "name": "RIGHT DOUBLE QUOTE",
+      "to": "\""
+    },
+    {
+      "from": "…",
+      "name": "HORIZONTAL ELLIPSIS",
+      "to": "..."
+    },
+    {
+      "from": "′",
+      "name": "PRIME",
+      "to": "'"
+    },
+    {
+      "from": "·",
+      "name": "MIDDLE DOT",
+      "to": "-"
+    },
+    {
+      "from": "•",
+      "name": "BULLET",
+      "to": "-"
+    },
+    {
+      "from": "→",
+      "name": "RIGHTWARDS ARROW",
+      "to": "->"
+    }
+  ],
+  "words": [
+    {
+      "find": "delve into",
+      "replace": "look at",
+      "family": "verbs"
+    },
+    {
+      "find": "delve",
+      "replace": "look",
+      "family": "verbs"
+    },
+    {
+      "find": "dive deep into",
+      "replace": "get into",
+      "family": "verbs"
+    },
+    {
+      "find": "deep dive",
+      "replace": "breakdown",
+      "family": "nouns"
+    },
+    {
+      "find": "leverage",
+      "replace": "use",
+      "family": "verbs"
+    },
+    {
+      "find": "leveraging",
+      "replace": "using",
+      "family": "verbs"
+    },
+    {
+      "find": "utilize",
+      "replace": "use",
+      "family": "verbs"
+    },
+    {
+      "find": "utilizing",
+      "replace": "using",
+      "family": "verbs"
+    },
+    {
+      "find": "harness",
+      "replace": "use",
+      "family": "verbs"
+    },
+    {
+      "find": "embark on",
+      "replace": "start",
+      "family": "verbs"
+    },
+    {
+      "find": "foster",
+      "replace": "build",
+      "family": "verbs"
+    },
+    {
+      "find": "facilitate",
+      "replace": "help",
+      "family": "verbs"
+    },
+    {
+      "find": "showcase",
+      "replace": "show",
+      "family": "verbs"
+    },
+    {
+      "find": "unlock",
+      "replace": "get",
+      "family": "verbs"
+    },
+    {
+      "find": "elevate",
+      "replace": "improve",
+      "family": "verbs"
+    },
+    {
+      "find": "streamline",
+      "replace": "simplify",
+      "family": "verbs"
+    },
+    {
+      "find": "spearhead",
+      "replace": "lead",
+      "family": "verbs"
+    },
+    {
+      "find": "underscore",
+      "replace": "show",
+      "family": "verbs"
+    },
+    {
+      "find": "underscores",
+      "replace": "shows",
+      "family": "verbs"
+    },
+    {
+      "find": "cultivate",
+      "replace": "build",
+      "family": "verbs"
+    },
+    {
+      "find": "amplify",
+      "replace": "boost",
+      "family": "verbs"
+    },
+    {
+      "find": "curate",
+      "replace": "pick",
+      "family": "verbs"
+    },
+    {
+      "find": "curated",
+      "replace": "picked",
+      "family": "verbs"
+    },
+    {
+      "find": "empower",
+      "replace": "let",
+      "family": "verbs"
+    },
+    {
+      "find": "revolutionize",
+      "replace": "change",
+      "family": "verbs"
+    },
+    {
+      "find": "transformative",
+      "replace": "big",
+      "family": "adjectives"
+    },
+    {
+      "find": "robust",
+      "replace": "solid",
+      "family": "adjectives"
+    },
+    {
+      "find": "seamless",
+      "replace": "clean",
+      "family": "adjectives"
+    },
+    {
+      "find": "seamlessly",
+      "replace": "cleanly",
+      "family": "adjectives"
+    },
+    {
+      "find": "pivotal",
+      "replace": "key",
+      "family": "adjectives"
+    },
+    {
+      "find": "crucial",
+      "replace": "important",
+      "family": "adjectives"
+    },
+    {
+      "find": "vital",
+      "replace": "important",
+      "family": "adjectives"
+    },
+    {
+      "find": "comprehensive",
+      "replace": "complete",
+      "family": "adjectives"
+    },
+    {
+      "find": "cutting-edge",
+      "replace": "new",
+      "family": "adjectives"
+    },
+    {
+      "find": "groundbreaking",
+      "replace": "new",
+      "family": "adjectives"
+    },
+    {
+      "find": "unparalleled",
+      "replace": "unmatched",
+      "family": "adjectives"
+    },
+    {
+      "find": "invaluable",
+      "replace": "useful",
+      "family": "adjectives"
+    },
+    {
+      "find": "meticulous",
+      "replace": "careful",
+      "family": "adjectives"
+    },
+    {
+      "find": "meticulously",
+      "replace": "carefully",
+      "family": "adjectives"
+    },
+    {
+      "find": "myriad of",
+      "replace": "many",
+      "family": "adjectives"
+    },
+    {
+      "find": "myriad",
+      "replace": "many",
+      "family": "adjectives"
+    },
+    {
+      "find": "multifaceted",
+      "replace": "complicated",
+      "family": "adjectives"
+    },
+    {
+      "find": "holistic",
+      "replace": "whole",
+      "family": "adjectives"
+    },
+    {
+      "find": "bespoke",
+      "replace": "custom",
+      "family": "adjectives"
+    },
+    {
+      "find": "innovative",
+      "replace": "new",
+      "family": "adjectives"
+    },
+    {
+      "find": "profound",
+      "replace": "big",
+      "family": "adjectives"
+    },
+    {
+      "find": "remarkable",
+      "replace": "notable",
+      "family": "adjectives"
+    },
+    {
+      "find": "compelling",
+      "replace": "convincing",
+      "family": "adjectives"
+    },
+    {
+      "find": "tapestry",
+      "replace": "mix",
+      "family": "nouns"
+    },
+    {
+      "find": "realm",
+      "replace": "world",
+      "family": "nouns"
+    },
+    {
+      "find": "landscape",
+      "replace": "market",
+      "family": "nouns"
+    },
+    {
+      "find": "journey",
+      "replace": "process",
+      "family": "nouns"
+    },
+    {
+      "find": "testament to",
+      "replace": "proof of",
+      "family": "nouns"
+    },
+    {
+      "find": "cornerstone",
+      "replace": "base",
+      "family": "nouns"
+    },
+    {
+      "find": "beacon",
+      "replace": "signal",
+      "family": "nouns"
+    },
+    {
+      "find": "paradigm",
+      "replace": "model",
+      "family": "nouns"
+    },
+    {
+      "find": "synergy",
+      "replace": "overlap",
+      "family": "nouns"
+    },
+    {
+      "find": "treasure trove",
+      "replace": "pile",
+      "family": "nouns"
+    },
+    {
+      "find": "plethora of",
+      "replace": "lots of",
+      "family": "nouns"
+    },
+    {
+      "find": "plethora",
+      "replace": "lots",
+      "family": "nouns"
+    },
+    {
+      "find": "arsenal",
+      "replace": "set",
+      "family": "nouns"
+    },
+    {
+      "find": "north star",
+      "replace": "goal",
+      "family": "nouns"
+    },
+    {
+      "find": "moreover",
+      "replace": "also",
+      "family": "connectives"
+    },
+    {
+      "find": "furthermore",
+      "replace": "also",
+      "family": "connectives"
+    },
+    {
+      "find": "additionally",
+      "replace": "also",
+      "family": "connectives"
+    },
+    {
+      "find": "nevertheless",
+      "replace": "still",
+      "family": "connectives"
+    },
+    {
+      "find": "consequently",
+      "replace": "so",
+      "family": "connectives"
+    },
+    {
+      "find": "thus",
+      "replace": "so",
+      "family": "connectives"
+    },
+    {
+      "find": "hence",
+      "replace": "so",
+      "family": "connectives"
+    },
+    {
+      "find": "notably",
+      "replace": "",
+      "family": "connectives"
+    },
+    {
+      "find": "importantly",
+      "replace": "",
+      "family": "connectives"
+    },
+    {
+      "find": "ultimately",
+      "replace": "in the end",
+      "family": "connectives"
+    },
+    {
+      "find": "in essence",
+      "replace": "basically",
+      "family": "connectives"
+    },
+    {
+      "find": "in conclusion",
+      "replace": "so",
+      "family": "connectives"
+    },
+    {
+      "find": "when it comes to",
+      "replace": "with",
+      "family": "connectives"
+    },
+    {
+      "find": "in order to",
+      "replace": "to",
+      "family": "connectives"
+    },
+    {
+      "find": "a wide range of",
+      "replace": "many",
+      "family": "connectives"
+    },
+    {
+      "find": "it is worth noting that",
+      "replace": "note that",
+      "family": "connectives"
+    }
+  ],
+  "phrases": [
+    {
+      "find": "in today's fast-paced world",
+      "replace": "right now",
+      "family": "openers"
+    },
+    {
+      "find": "in today's digital age",
+      "replace": "right now",
+      "family": "openers"
+    },
+    {
+      "find": "in the ever-evolving landscape of",
+      "replace": "in",
+      "family": "openers"
+    },
+    {
+      "find": "in the ever-changing world of",
+      "replace": "in",
+      "family": "openers"
+    },
+    {
+      "find": "let's face it",
+      "replace": "",
+      "family": "openers"
+    },
+    {
+      "find": "here's the thing",
+      "replace": "",
+      "family": "openers"
+    },
+    {
+      "find": "picture this",
+      "replace": "",
+      "family": "openers"
+    },
+    {
+      "find": "imagine a world where",
+      "replace": "imagine if",
+      "family": "openers"
+    },
+    {
+      "find": "it's no secret that",
+      "replace": "",
+      "family": "openers"
+    },
+    {
+      "find": "we've all been there",
+      "replace": "",
+      "family": "openers"
+    },
+    {
+      "find": "let that sink in",
+      "replace": "",
+      "family": "closers"
+    },
+    {
+      "find": "the choice is yours",
+      "replace": "",
+      "family": "closers"
+    },
+    {
+      "find": "food for thought",
+      "replace": "",
+      "family": "closers"
+    },
+    {
+      "find": "the future is here",
+      "replace": "",
+      "family": "closers"
+    },
+    {
+      "find": "what are your thoughts?",
+      "replace": "",
+      "family": "closers"
+    },
+    {
+      "find": "drop a comment below",
+      "replace": "",
+      "family": "closers"
+    },
+    {
+      "find": "at the end of the day",
+      "replace": "",
+      "family": "closers"
+    },
+    {
+      "find": "needle-moving",
+      "replace": "useful",
+      "family": "closers"
+    },
+    {
+      "find": "move the needle",
+      "replace": "make a difference",
+      "family": "closers"
+    },
+    {
+      "find": "a testament to",
+      "replace": "proof of",
+      "family": "nouns"
+    },
+    {
+      "find": "had the opportunity to",
+      "replace": "got to",
+      "family": "connectives"
+    },
+    {
+      "find": "i am excited to announce",
+      "replace": "",
+      "family": "openers"
+    },
+    {
+      "find": "i'm thrilled to share",
+      "replace": "",
+      "family": "openers"
+    },
+    {
+      "find": "i am humbled to",
+      "replace": "",
+      "family": "openers"
+    },
+    {
+      "find": "without further ado",
+      "replace": "",
+      "family": "openers"
+    },
+    {
+      "find": "buckle up",
+      "replace": "",
+      "family": "openers"
+    },
+    {
+      "find": "the harsh truth is",
+      "replace": "",
+      "family": "openers"
+    },
+    {
+      "find": "spoiler alert",
+      "replace": "",
+      "family": "openers"
+    },
+    {
+      "find": "read that again",
+      "replace": "",
+      "family": "closers"
+    },
+    {
+      "find": "you're welcome",
+      "replace": "",
+      "family": "closers"
+    },
+    {
+      "find": "save this for later",
+      "replace": "",
+      "family": "closers"
+    },
+    {
+      "find": "who's with me",
+      "replace": "",
+      "family": "closers"
+    }
+  ],
+  "spelling": [
+    {
+      "find": "organize",
+      "replace": "organise"
+    },
+    {
+      "find": "organizes",
+      "replace": "organises"
+    },
+    {
+      "find": "organized",
+      "replace": "organised"
+    },
+    {
+      "find": "organizing",
+      "replace": "organising"
+    },
+    {
+      "find": "organization",
+      "replace": "organisation"
+    },
+    {
+      "find": "organizations",
+      "replace": "organisations"
+    },
+    {
+      "find": "optimize",
+      "replace": "optimise"
+    },
+    {
+      "find": "optimizes",
+      "replace": "optimises"
+    },
+    {
+      "find": "optimized",
+      "replace": "optimised"
+    },
+    {
+      "find": "optimizing",
+      "replace": "optimising"
+    },
+    {
+      "find": "optimization",
+      "replace": "optimisation"
+    },
+    {
+      "find": "optimizations",
+      "replace": "optimisations"
+    },
+    {
+      "find": "realize",
+      "replace": "realise"
+    },
+    {
+      "find": "realizes",
+      "replace": "realises"
+    },
+    {
+      "find": "realized",
+      "replace": "realised"
+    },
+    {
+      "find": "realizing",
+      "replace": "realising"
+    },
+    {
+      "find": "realization",
+      "replace": "realisation"
+    },
+    {
+      "find": "realizations",
+      "replace": "realisations"
+    },
+    {
+      "find": "maximize",
+      "replace": "maximise"
+    },
+    {
+      "find": "maximizes",
+      "replace": "maximises"
+    },
+    {
+      "find": "maximized",
+      "replace": "maximised"
+    },
+    {
+      "find": "maximizing",
+      "replace": "maximising"
+    },
+    {
+      "find": "maximization",
+      "replace": "maximisation"
+    },
+    {
+      "find": "maximizations",
+      "replace": "maximisations"
+    },
+    {
+      "find": "minimize",
+      "replace": "minimise"
+    },
+    {
+      "find": "minimizes",
+      "replace": "minimises"
+    },
+    {
+      "find": "minimized",
+      "replace": "minimised"
+    },
+    {
+      "find": "minimizing",
+      "replace": "minimising"
+    },
+    {
+      "find": "minimization",
+      "replace": "minimisation"
+    },
+    {
+      "find": "minimizations",
+      "replace": "minimisations"
+    },
+    {
+      "find": "customize",
+      "replace": "customise"
+    },
+    {
+      "find": "customizes",
+      "replace": "customises"
+    },
+    {
+      "find": "customized",
+      "replace": "customised"
+    },
+    {
+      "find": "customizing",
+      "replace": "customising"
+    },
+    {
+      "find": "customization",
+      "replace": "customisation"
+    },
+    {
+      "find": "customizations",
+      "replace": "customisations"
+    },
+    {
+      "find": "recognize",
+      "replace": "recognise"
+    },
+    {
+      "find": "recognizes",
+      "replace": "recognises"
+    },
+    {
+      "find": "recognized",
+      "replace": "recognised"
+    },
+    {
+      "find": "recognizing",
+      "replace": "recognising"
+    },
+    {
+      "find": "recognization",
+      "replace": "recognisation"
+    },
+    {
+      "find": "recognizations",
+      "replace": "recognisations"
+    },
+    {
+      "find": "priorize",
+      "replace": "priorise"
+    },
+    {
+      "find": "priorizes",
+      "replace": "priorises"
+    },
+    {
+      "find": "priorized",
+      "replace": "priorised"
+    },
+    {
+      "find": "priorizing",
+      "replace": "priorising"
+    },
+    {
+      "find": "priorization",
+      "replace": "priorisation"
+    },
+    {
+      "find": "priorizations",
+      "replace": "priorisations"
+    },
+    {
+      "find": "summarize",
+      "replace": "summarise"
+    },
+    {
+      "find": "summarizes",
+      "replace": "summarises"
+    },
+    {
+      "find": "summarized",
+      "replace": "summarised"
+    },
+    {
+      "find": "summarizing",
+      "replace": "summarising"
+    },
+    {
+      "find": "summarization",
+      "replace": "summarisation"
+    },
+    {
+      "find": "summarizations",
+      "replace": "summarisations"
+    },
+    {
+      "find": "finalize",
+      "replace": "finalise"
+    },
+    {
+      "find": "finalizes",
+      "replace": "finalises"
+    },
+    {
+      "find": "finalized",
+      "replace": "finalised"
+    },
+    {
+      "find": "finalizing",
+      "replace": "finalising"
+    },
+    {
+      "find": "finalization",
+      "replace": "finalisation"
+    },
+    {
+      "find": "finalizations",
+      "replace": "finalisations"
+    },
+    {
+      "find": "utilize",
+      "replace": "utilise"
+    },
+    {
+      "find": "utilizes",
+      "replace": "utilises"
+    },
+    {
+      "find": "utilized",
+      "replace": "utilised"
+    },
+    {
+      "find": "utilizing",
+      "replace": "utilising"
+    },
+    {
+      "find": "utilization",
+      "replace": "utilisation"
+    },
+    {
+      "find": "utilizations",
+      "replace": "utilisations"
+    },
+    {
+      "find": "standardize",
+      "replace": "standardise"
+    },
+    {
+      "find": "standardizes",
+      "replace": "standardises"
+    },
+    {
+      "find": "standardized",
+      "replace": "standardised"
+    },
+    {
+      "find": "standardizing",
+      "replace": "standardising"
+    },
+    {
+      "find": "standardization",
+      "replace": "standardisation"
+    },
+    {
+      "find": "standardizations",
+      "replace": "standardisations"
+    },
+    {
+      "find": "centralize",
+      "replace": "centralise"
+    },
+    {
+      "find": "centralizes",
+      "replace": "centralises"
+    },
+    {
+      "find": "centralized",
+      "replace": "centralised"
+    },
+    {
+      "find": "centralizing",
+      "replace": "centralising"
+    },
+    {
+      "find": "centralization",
+      "replace": "centralisation"
+    },
+    {
+      "find": "centralizations",
+      "replace": "centralisations"
+    },
+    {
+      "find": "digitize",
+      "replace": "digitise"
+    },
+    {
+      "find": "digitizes",
+      "replace": "digitises"
+    },
+    {
+      "find": "digitized",
+      "replace": "digitised"
+    },
+    {
+      "find": "digitizing",
+      "replace": "digitising"
+    },
+    {
+      "find": "digitization",
+      "replace": "digitisation"
+    },
+    {
+      "find": "digitizations",
+      "replace": "digitisations"
+    },
+    {
+      "find": "modernize",
+      "replace": "modernise"
+    },
+    {
+      "find": "modernizes",
+      "replace": "modernises"
+    },
+    {
+      "find": "modernized",
+      "replace": "modernised"
+    },
+    {
+      "find": "modernizing",
+      "replace": "modernising"
+    },
+    {
+      "find": "modernization",
+      "replace": "modernisation"
+    },
+    {
+      "find": "modernizations",
+      "replace": "modernisations"
+    },
+    {
+      "find": "authorize",
+      "replace": "authorise"
+    },
+    {
+      "find": "authorizes",
+      "replace": "authorises"
+    },
+    {
+      "find": "authorized",
+      "replace": "authorised"
+    },
+    {
+      "find": "authorizing",
+      "replace": "authorising"
+    },
+    {
+      "find": "authorization",
+      "replace": "authorisation"
+    },
+    {
+      "find": "authorizations",
+      "replace": "authorisations"
+    },
+    {
+      "find": "categorize",
+      "replace": "categorise"
+    },
+    {
+      "find": "categorizes",
+      "replace": "categorises"
+    },
+    {
+      "find": "categorized",
+      "replace": "categorised"
+    },
+    {
+      "find": "categorizing",
+      "replace": "categorising"
+    },
+    {
+      "find": "categorization",
+      "replace": "categorisation"
+    },
+    {
+      "find": "categorizations",
+      "replace": "categorisations"
+    },
+    {
+      "find": "emphasize",
+      "replace": "emphasise"
+    },
+    {
+      "find": "emphasizes",
+      "replace": "emphasises"
+    },
+    {
+      "find": "emphasized",
+      "replace": "emphasised"
+    },
+    {
+      "find": "emphasizing",
+      "replace": "emphasising"
+    },
+    {
+      "find": "emphasization",
+      "replace": "emphasisation"
+    },
+    {
+      "find": "emphasizations",
+      "replace": "emphasisations"
+    },
+    {
+      "find": "specialize",
+      "replace": "specialise"
+    },
+    {
+      "find": "specializes",
+      "replace": "specialises"
+    },
+    {
+      "find": "specialized",
+      "replace": "specialised"
+    },
+    {
+      "find": "specializing",
+      "replace": "specialising"
+    },
+    {
+      "find": "specialization",
+      "replace": "specialisation"
+    },
+    {
+      "find": "specializations",
+      "replace": "specialisations"
+    },
+    {
+      "find": "visualize",
+      "replace": "visualise"
+    },
+    {
+      "find": "visualizes",
+      "replace": "visualises"
+    },
+    {
+      "find": "visualized",
+      "replace": "visualised"
+    },
+    {
+      "find": "visualizing",
+      "replace": "visualising"
+    },
+    {
+      "find": "visualization",
+      "replace": "visualisation"
+    },
+    {
+      "find": "visualizations",
+      "replace": "visualisations"
+    },
+    {
+      "find": "capitalize",
+      "replace": "capitalise"
+    },
+    {
+      "find": "capitalizes",
+      "replace": "capitalises"
+    },
+    {
+      "find": "capitalized",
+      "replace": "capitalised"
+    },
+    {
+      "find": "capitalizing",
+      "replace": "capitalising"
+    },
+    {
+      "find": "capitalization",
+      "replace": "capitalisation"
+    },
+    {
+      "find": "capitalizations",
+      "replace": "capitalisations"
+    },
+    {
+      "find": "mobilize",
+      "replace": "mobilise"
+    },
+    {
+      "find": "mobilizes",
+      "replace": "mobilises"
+    },
+    {
+      "find": "mobilized",
+      "replace": "mobilised"
+    },
+    {
+      "find": "mobilizing",
+      "replace": "mobilising"
+    },
+    {
+      "find": "mobilization",
+      "replace": "mobilisation"
+    },
+    {
+      "find": "mobilizations",
+      "replace": "mobilisations"
+    },
+    {
+      "find": "monetize",
+      "replace": "monetise"
+    },
+    {
+      "find": "monetizes",
+      "replace": "monetises"
+    },
+    {
+      "find": "monetized",
+      "replace": "monetised"
+    },
+    {
+      "find": "monetizing",
+      "replace": "monetising"
+    },
+    {
+      "find": "monetization",
+      "replace": "monetisation"
+    },
+    {
+      "find": "monetizations",
+      "replace": "monetisations"
+    },
+    {
+      "find": "normalize",
+      "replace": "normalise"
+    },
+    {
+      "find": "normalizes",
+      "replace": "normalises"
+    },
+    {
+      "find": "normalized",
+      "replace": "normalised"
+    },
+    {
+      "find": "normalizing",
+      "replace": "normalising"
+    },
+    {
+      "find": "normalization",
+      "replace": "normalisation"
+    },
+    {
+      "find": "normalizations",
+      "replace": "normalisations"
+    },
+    {
+      "find": "personalize",
+      "replace": "personalise"
+    },
+    {
+      "find": "personalizes",
+      "replace": "personalises"
+    },
+    {
+      "find": "personalized",
+      "replace": "personalised"
+    },
+    {
+      "find": "personalizing",
+      "replace": "personalising"
+    },
+    {
+      "find": "personalization",
+      "replace": "personalisation"
+    },
+    {
+      "find": "personalizations",
+      "replace": "personalisations"
+    },
+    {
+      "find": "rationalize",
+      "replace": "rationalise"
+    },
+    {
+      "find": "rationalizes",
+      "replace": "rationalises"
+    },
+    {
+      "find": "rationalized",
+      "replace": "rationalised"
+    },
+    {
+      "find": "rationalizing",
+      "replace": "rationalising"
+    },
+    {
+      "find": "rationalization",
+      "replace": "rationalisation"
+    },
+    {
+      "find": "rationalizations",
+      "replace": "rationalisations"
+    },
+    {
+      "find": "synchronize",
+      "replace": "synchronise"
+    },
+    {
+      "find": "synchronizes",
+      "replace": "synchronises"
+    },
+    {
+      "find": "synchronized",
+      "replace": "synchronised"
+    },
+    {
+      "find": "synchronizing",
+      "replace": "synchronising"
+    },
+    {
+      "find": "synchronization",
+      "replace": "synchronisation"
+    },
+    {
+      "find": "synchronizations",
+      "replace": "synchronisations"
+    },
+    {
+      "find": "localize",
+      "replace": "localise"
+    },
+    {
+      "find": "localizes",
+      "replace": "localises"
+    },
+    {
+      "find": "localized",
+      "replace": "localised"
+    },
+    {
+      "find": "localizing",
+      "replace": "localising"
+    },
+    {
+      "find": "localization",
+      "replace": "localisation"
+    },
+    {
+      "find": "localizations",
+      "replace": "localisations"
+    },
+    {
+      "find": "globalize",
+      "replace": "globalise"
+    },
+    {
+      "find": "globalizes",
+      "replace": "globalises"
+    },
+    {
+      "find": "globalized",
+      "replace": "globalised"
+    },
+    {
+      "find": "globalizing",
+      "replace": "globalising"
+    },
+    {
+      "find": "globalization",
+      "replace": "globalisation"
+    },
+    {
+      "find": "globalizations",
+      "replace": "globalisations"
+    },
+    {
+      "find": "itemize",
+      "replace": "itemise"
+    },
+    {
+      "find": "itemizes",
+      "replace": "itemises"
+    },
+    {
+      "find": "itemized",
+      "replace": "itemised"
+    },
+    {
+      "find": "itemizing",
+      "replace": "itemising"
+    },
+    {
+      "find": "itemization",
+      "replace": "itemisation"
+    },
+    {
+      "find": "itemizations",
+      "replace": "itemisations"
+    },
+    {
+      "find": "minimalize",
+      "replace": "minimalise"
+    },
+    {
+      "find": "minimalizes",
+      "replace": "minimalises"
+    },
+    {
+      "find": "minimalized",
+      "replace": "minimalised"
+    },
+    {
+      "find": "minimalizing",
+      "replace": "minimalising"
+    },
+    {
+      "find": "minimalization",
+      "replace": "minimalisation"
+    },
+    {
+      "find": "minimalizations",
+      "replace": "minimalisations"
+    },
+    {
+      "find": "formalize",
+      "replace": "formalise"
+    },
+    {
+      "find": "formalizes",
+      "replace": "formalises"
+    },
+    {
+      "find": "formalized",
+      "replace": "formalised"
+    },
+    {
+      "find": "formalizing",
+      "replace": "formalising"
+    },
+    {
+      "find": "formalization",
+      "replace": "formalisation"
+    },
+    {
+      "find": "formalizations",
+      "replace": "formalisations"
+    },
+    {
+      "find": "initialize",
+      "replace": "initialise"
+    },
+    {
+      "find": "initializes",
+      "replace": "initialises"
+    },
+    {
+      "find": "initialized",
+      "replace": "initialised"
+    },
+    {
+      "find": "initializing",
+      "replace": "initialising"
+    },
+    {
+      "find": "initialization",
+      "replace": "initialisation"
+    },
+    {
+      "find": "initializations",
+      "replace": "initialisations"
+    },
+    {
+      "find": "criticize",
+      "replace": "criticise"
+    },
+    {
+      "find": "criticizes",
+      "replace": "criticises"
+    },
+    {
+      "find": "criticized",
+      "replace": "criticised"
+    },
+    {
+      "find": "criticizing",
+      "replace": "criticising"
+    },
+    {
+      "find": "criticization",
+      "replace": "criticisation"
+    },
+    {
+      "find": "criticizations",
+      "replace": "criticisations"
+    },
+    {
+      "find": "materialize",
+      "replace": "materialise"
+    },
+    {
+      "find": "materializes",
+      "replace": "materialises"
+    },
+    {
+      "find": "materialized",
+      "replace": "materialised"
+    },
+    {
+      "find": "materializing",
+      "replace": "materialising"
+    },
+    {
+      "find": "materialization",
+      "replace": "materialisation"
+    },
+    {
+      "find": "materializations",
+      "replace": "materialisations"
+    },
+    {
+      "find": "memorize",
+      "replace": "memorise"
+    },
+    {
+      "find": "memorizes",
+      "replace": "memorises"
+    },
+    {
+      "find": "memorized",
+      "replace": "memorised"
+    },
+    {
+      "find": "memorizing",
+      "replace": "memorising"
+    },
+    {
+      "find": "memorization",
+      "replace": "memorisation"
+    },
+    {
+      "find": "memorizations",
+      "replace": "memorisations"
+    },
+    {
+      "find": "neutralize",
+      "replace": "neutralise"
+    },
+    {
+      "find": "neutralizes",
+      "replace": "neutralises"
+    },
+    {
+      "find": "neutralized",
+      "replace": "neutralised"
+    },
+    {
+      "find": "neutralizing",
+      "replace": "neutralising"
+    },
+    {
+      "find": "neutralization",
+      "replace": "neutralisation"
+    },
+    {
+      "find": "neutralizations",
+      "replace": "neutralisations"
+    },
+    {
+      "find": "popularize",
+      "replace": "popularise"
+    },
+    {
+      "find": "popularizes",
+      "replace": "popularises"
+    },
+    {
+      "find": "popularized",
+      "replace": "popularised"
+    },
+    {
+      "find": "popularizing",
+      "replace": "popularising"
+    },
+    {
+      "find": "popularization",
+      "replace": "popularisation"
+    },
+    {
+      "find": "popularizations",
+      "replace": "popularisations"
+    },
+    {
+      "find": "stabilize",
+      "replace": "stabilise"
+    },
+    {
+      "find": "stabilizes",
+      "replace": "stabilises"
+    },
+    {
+      "find": "stabilized",
+      "replace": "stabilised"
+    },
+    {
+      "find": "stabilizing",
+      "replace": "stabilising"
+    },
+    {
+      "find": "stabilization",
+      "replace": "stabilisation"
+    },
+    {
+      "find": "stabilizations",
+      "replace": "stabilisations"
+    },
+    {
+      "find": "symbolize",
+      "replace": "symbolise"
+    },
+    {
+      "find": "symbolizes",
+      "replace": "symbolises"
+    },
+    {
+      "find": "symbolized",
+      "replace": "symbolised"
+    },
+    {
+      "find": "symbolizing",
+      "replace": "symbolising"
+    },
+    {
+      "find": "symbolization",
+      "replace": "symbolisation"
+    },
+    {
+      "find": "symbolizations",
+      "replace": "symbolisations"
+    },
+    {
+      "find": "systematize",
+      "replace": "systematise"
+    },
+    {
+      "find": "systematizes",
+      "replace": "systematises"
+    },
+    {
+      "find": "systematized",
+      "replace": "systematised"
+    },
+    {
+      "find": "systematizing",
+      "replace": "systematising"
+    },
+    {
+      "find": "systematization",
+      "replace": "systematisation"
+    },
+    {
+      "find": "systematizations",
+      "replace": "systematisations"
+    },
+    {
+      "find": "theorize",
+      "replace": "theorise"
+    },
+    {
+      "find": "theorizes",
+      "replace": "theorises"
+    },
+    {
+      "find": "theorized",
+      "replace": "theorised"
+    },
+    {
+      "find": "theorizing",
+      "replace": "theorising"
+    },
+    {
+      "find": "theorization",
+      "replace": "theorisation"
+    },
+    {
+      "find": "theorizations",
+      "replace": "theorisations"
+    },
+    {
+      "find": "vaporize",
+      "replace": "vaporise"
+    },
+    {
+      "find": "vaporizes",
+      "replace": "vaporises"
+    },
+    {
+      "find": "vaporized",
+      "replace": "vaporised"
+    },
+    {
+      "find": "vaporizing",
+      "replace": "vaporising"
+    },
+    {
+      "find": "vaporization",
+      "replace": "vaporisation"
+    },
+    {
+      "find": "vaporizations",
+      "replace": "vaporisations"
+    },
+    {
+      "find": "vocalize",
+      "replace": "vocalise"
+    },
+    {
+      "find": "vocalizes",
+      "replace": "vocalises"
+    },
+    {
+      "find": "vocalized",
+      "replace": "vocalised"
+    },
+    {
+      "find": "vocalizing",
+      "replace": "vocalising"
+    },
+    {
+      "find": "vocalization",
+      "replace": "vocalisation"
+    },
+    {
+      "find": "vocalizations",
+      "replace": "vocalisations"
+    },
+    {
+      "find": "analyze",
+      "replace": "analyse"
+    },
+    {
+      "find": "analyzes",
+      "replace": "analyses"
+    },
+    {
+      "find": "analyzed",
+      "replace": "analysed"
+    },
+    {
+      "find": "analyzing",
+      "replace": "analysing"
+    },
+    {
+      "find": "analyzer",
+      "replace": "analyser"
+    },
+    {
+      "find": "behavior",
+      "replace": "behaviour"
+    },
+    {
+      "find": "behaviors",
+      "replace": "behaviours"
+    },
+    {
+      "find": "color",
+      "replace": "colour"
+    },
+    {
+      "find": "colors",
+      "replace": "colours"
+    },
+    {
+      "find": "colored",
+      "replace": "coloured"
+    },
+    {
+      "find": "labor",
+      "replace": "labour"
+    },
+    {
+      "find": "labors",
+      "replace": "labours"
+    },
+    {
+      "find": "favor",
+      "replace": "favour"
+    },
+    {
+      "find": "favors",
+      "replace": "favours"
+    },
+    {
+      "find": "favorite",
+      "replace": "favourite"
+    },
+    {
+      "find": "favorites",
+      "replace": "favourites"
+    },
+    {
+      "find": "honor",
+      "replace": "honour"
+    },
+    {
+      "find": "honors",
+      "replace": "honours"
+    },
+    {
+      "find": "humor",
+      "replace": "humour"
+    },
+    {
+      "find": "flavor",
+      "replace": "flavour"
+    },
+    {
+      "find": "flavors",
+      "replace": "flavours"
+    },
+    {
+      "find": "neighbor",
+      "replace": "neighbour"
+    },
+    {
+      "find": "neighbors",
+      "replace": "neighbours"
+    },
+    {
+      "find": "endeavor",
+      "replace": "endeavour"
+    },
+    {
+      "find": "endeavors",
+      "replace": "endeavours"
+    },
+    {
+      "find": "rumor",
+      "replace": "rumour"
+    },
+    {
+      "find": "rumors",
+      "replace": "rumours"
+    },
+    {
+      "find": "center",
+      "replace": "centre"
+    },
+    {
+      "find": "centers",
+      "replace": "centres"
+    },
+    {
+      "find": "centered",
+      "replace": "centred"
+    },
+    {
+      "find": "centering",
+      "replace": "centring"
+    },
+    {
+      "find": "meter",
+      "replace": "metre"
+    },
+    {
+      "find": "meters",
+      "replace": "metres"
+    },
+    {
+      "find": "liter",
+      "replace": "litre"
+    },
+    {
+      "find": "liters",
+      "replace": "litres"
+    },
+    {
+      "find": "fiber",
+      "replace": "fibre"
+    },
+    {
+      "find": "theater",
+      "replace": "theatre"
+    },
+    {
+      "find": "catalog",
+      "replace": "catalogue"
+    },
+    {
+      "find": "catalogs",
+      "replace": "catalogues"
+    },
+    {
+      "find": "dialog",
+      "replace": "dialogue"
+    },
+    {
+      "find": "dialogs",
+      "replace": "dialogues"
+    },
+    {
+      "find": "analog",
+      "replace": "analogue"
+    },
+    {
+      "find": "fulfill",
+      "replace": "fulfil"
+    },
+    {
+      "find": "fulfills",
+      "replace": "fulfils"
+    },
+    {
+      "find": "fulfillment",
+      "replace": "fulfilment"
+    },
+    {
+      "find": "enroll",
+      "replace": "enrol"
+    },
+    {
+      "find": "enrolls",
+      "replace": "enrols"
+    },
+    {
+      "find": "enrollment",
+      "replace": "enrolment"
+    },
+    {
+      "find": "skillful",
+      "replace": "skilful"
+    },
+    {
+      "find": "traveled",
+      "replace": "travelled"
+    },
+    {
+      "find": "traveling",
+      "replace": "travelling"
+    },
+    {
+      "find": "traveler",
+      "replace": "traveller"
+    },
+    {
+      "find": "travelers",
+      "replace": "travellers"
+    },
+    {
+      "find": "canceled",
+      "replace": "cancelled"
+    },
+    {
+      "find": "canceling",
+      "replace": "cancelling"
+    },
+    {
+      "find": "modeled",
+      "replace": "modelled"
+    },
+    {
+      "find": "modeling",
+      "replace": "modelling"
+    },
+    {
+      "find": "labeled",
+      "replace": "labelled"
+    },
+    {
+      "find": "labeling",
+      "replace": "labelling"
+    },
+    {
+      "find": "signaled",
+      "replace": "signalled"
+    },
+    {
+      "find": "signaling",
+      "replace": "signalling"
+    },
+    {
+      "find": "totaled",
+      "replace": "totalled"
+    },
+    {
+      "find": "totaling",
+      "replace": "totalling"
+    },
+    {
+      "find": "fueled",
+      "replace": "fuelled"
+    },
+    {
+      "find": "fueling",
+      "replace": "fuelling"
+    },
+    {
+      "find": "counselor",
+      "replace": "counsellor"
+    },
+    {
+      "find": "defense",
+      "replace": "defence"
+    },
+    {
+      "find": "offense",
+      "replace": "offence"
+    },
+    {
+      "find": "pretense",
+      "replace": "pretence"
+    },
+    {
+      "find": "gray",
+      "replace": "grey"
+    },
+    {
+      "find": "aluminum",
+      "replace": "aluminium"
+    },
+    {
+      "find": "aging",
+      "replace": "ageing"
+    },
+    {
+      "find": "judgment",
+      "replace": "judgement"
+    },
+    {
+      "find": "judgments",
+      "replace": "judgements"
+    },
+    {
+      "find": "acknowledgment",
+      "replace": "acknowledgement"
+    },
+    {
+      "find": "jewelry",
+      "replace": "jewellery"
+    },
+    {
+      "find": "pajamas",
+      "replace": "pyjamas"
+    },
+    {
+      "find": "skeptical",
+      "replace": "sceptical"
+    },
+    {
+      "find": "skeptic",
+      "replace": "sceptic"
+    },
+    {
+      "find": "specialty",
+      "replace": "speciality"
+    },
+    {
+      "find": "cozy",
+      "replace": "cosy"
+    },
+    {
+      "find": "plow",
+      "replace": "plough"
+    },
+    {
+      "find": "mustache",
+      "replace": "moustache"
+    },
+    {
+      "find": "pediatric",
+      "replace": "paediatric"
+    },
+    {
+      "find": "anemia",
+      "replace": "anaemia"
+    },
+    {
+      "find": "anesthetic",
+      "replace": "anaesthetic"
+    },
+    {
+      "find": "estrogen",
+      "replace": "oestrogen"
+    },
+    {
+      "find": "encyclopedia",
+      "replace": "encyclopaedia"
+    },
+    {
+      "find": "maneuver",
+      "replace": "manoeuvre"
+    }
+  ],
+  "spelling_flag": [
+    {
+      "find": "license",
+      "why": "Australian English: 'licence' is the noun, 'license' the verb. 'Atlassian licence', 'we license it'. Check which this is."
+    },
+    {
+      "find": "licenses",
+      "why": "Noun should be 'licences'. Verb 'licenses' is fine."
+    },
+    {
+      "find": "program",
+      "why": "'programme' unless it is software. 'A Jira program' is rare; 'a change programme' is the usual case."
+    },
+    {
+      "find": "programs",
+      "why": "'programmes' unless software."
+    }
+  ],
+  "house": [
+    {
+      "find": "Atlassian Enterprise Partner",
+      "replace": "Atlassian Solution Partner",
+      "why": "DI is an Atlassian Solution Partner. Never Enterprise Partner."
+    },
+    {
+      "find": "Enterprise Partner",
+      "replace": "Atlassian Solution Partner",
+      "why": "DI is an Atlassian Solution Partner. Never Enterprise Partner."
+    },
+    {
+      "find": "Atlassian reseller",
+      "replace": "Atlassian Solution Partner",
+      "why": "DI does not describe itself as a reseller."
+    },
+    {
+      "find": "game-changer",
+      "replace": null,
+      "why": "Banned in DI copy. Say what changed and by how much."
+    },
+    {
+      "find": "game changer",
+      "replace": null,
+      "why": "Banned in DI copy. Say what changed and by how much."
+    },
+    {
+      "find": "silver bullet",
+      "replace": null,
+      "why": "Banned in DI copy."
+    },
+    {
+      "find": "synergy",
+      "replace": null,
+      "why": "Banned in DI copy."
+    },
+    {
+      "find": "synergies",
+      "replace": null,
+      "why": "Banned in DI copy."
+    },
+    {
+      "find": "best-in-class",
+      "replace": null,
+      "why": "Name the benchmark or delete the claim."
+    },
+    {
+      "find": "world-class",
+      "replace": null,
+      "why": "Name the benchmark or delete the claim."
+    },
+    {
+      "find": "industry-leading",
+      "replace": null,
+      "why": "Name the benchmark or delete the claim."
+    },
+    {
+      "find": "proven methodology",
+      "replace": null,
+      "why": "Name the methodology: Digital Factory, Platform Discovery, Security Uplift."
+    },
+    {
+      "find": "trusted by leading organisations",
+      "replace": null,
+      "why": "Name them (with approval) or delete."
+    },
+    {
+      "find": "trusted by leading organizations",
+      "replace": null,
+      "why": "Name them (with approval) or delete."
+    },
+    {
+      "find": "tailored solutions",
+      "replace": null,
+      "why": "Say what was actually built."
+    },
+    {
+      "find": "it's important to note that",
+      "replace": "",
+      "why": "Filler. Deleted."
+    },
+    {
+      "find": "it is important to note that",
+      "replace": "",
+      "why": "Filler. Deleted."
+    },
+    {
+      "find": "game-changing",
+      "replace": null,
+      "why": "Banned in DI copy. Say what changed and by how much."
+    }
+  ],
+  "di_terms": [
+    {
+      "term": "Sundown Rule",
+      "explain": "same-day response to every client enquiry"
+    },
+    {
+      "term": "Digital Factory",
+      "explain": "DI's managed-services partnership: strategic hours, licensing optimisation, platform support"
+    },
+    {
+      "term": "Diai Foundry",
+      "explain": "DI's AI consultancy division"
+    },
+    {
+      "term": "Platform Discovery",
+      "explain": "a complimentary assessment of an Atlassian environment"
+    },
+    {
+      "term": "AI Fast Start",
+      "explain": "20 hours to get Rovo and Atlassian Intelligence doing real work"
+    },
+    {
+      "term": "Security Uplift",
+      "explain": "20 controls, six domains, assess then remediate"
+    }
+  ],
+  "protected": [
+    "Design Industries",
+    "Diai Foundry",
+    "Digital Factory",
+    "Sundown Rule",
+    "Platform Discovery",
+    "AI Fast Start",
+    "Security Uplift",
+    "Formula One",
+    "Data Center",
+    "Jira Data Center",
+    "Confluence Data Center",
+    "Jira Service Management",
+    "Jira Software",
+    "Jira Work Management",
+    "Jira Product Discovery",
+    "Jira Align",
+    "Atlassian Intelligence",
+    "Atlassian Cloud",
+    "Atlassian Guard",
+    "Atlassian Access",
+    "Atlassian Marketplace",
+    "Atlassian Analytics",
+    "Atlassian Community",
+    "Atlassian Team",
+    "Rovo",
+    "Confluence",
+    "Bitbucket",
+    "Trello",
+    "Loom",
+    "Compass",
+    "Opsgenie",
+    "Statuspage",
+    "Jira",
+    "Atlassian",
+    "HubSpot",
+    "Tempo",
+    "ScriptRunner",
+    "di.net.au"
+  ],
+  "hashtag_limit": 5,
+  "structures": [
+    {
+      "id": "not-just",
+      "regex": "(?i)\\bit'?s not (?:just|only) [^.!?\\n]{2,60}[,.] it'?s\\b",
+      "name": "\"It's not just X, it's Y\"",
+      "fix": "Say the one thing you actually mean. Delete the setup half."
+    },
+    {
+      "id": "not-only",
+      "regex": "(?i)\\bnot only\\b[^.!?\\n]{2,80}\\bbut also\\b",
+      "name": "\"Not only X but also Y\"",
+      "fix": "Split into two sentences, or drop the weaker half."
+    },
+    {
+      "id": "isnt-about",
+      "regex": "(?i)\\b(?:this|it) is(?:n'?t| not) about [^.!?\\n]{2,60}[.!] it'?s about\\b",
+      "name": "\"It isn't about X. It's about Y.\"",
+      "fix": "Lead with Y. The reversal is the tell."
+    },
+    {
+      "id": "the-result",
+      "regex": "(?i)^\\s*(?:the result|the best part|the kicker|the catch)\\?\\s*$",
+      "name": "One-word rhetorical question line",
+      "fix": "Answer it inline instead of staging a reveal."
+    },
+    {
+      "id": "heres-what",
+      "regex": "(?i)\\bhere'?s what (?:i|we) learned\\b",
+      "name": "\"Here's what I learned\"",
+      "fix": "State the lesson. Skip the announcement."
+    },
+    {
+      "id": "triad",
+      "regex": "(?i)\\b\\w+, \\w+, and \\w+\\.",
+      "name": "Rule-of-three triad",
+      "fix": "Two items or four. Three is the model's default rhythm."
+    },
+    {
+      "id": "rocket",
+      "regex": "[\\U0001F680\\U0001F525\\U0001F4A1\\u2728\\U0001F3AF]",
+      "name": "Rocket / fire / bulb / sparkle / dart emoji",
+      "fix": "One emoji max, and not one of these five."
+    },
+    {
+      "id": "as-an-ai",
+      "regex": "(?i)\\bas an ai\\b|\\bas a language model\\b",
+      "name": "Model self-reference",
+      "fix": "Delete the sentence."
+    },
+    {
+      "id": "in-summary",
+      "regex": "(?i)^\\s*(?:in summary|to summarize|in conclusion)\\b",
+      "name": "Essay-closer opener",
+      "fix": "A post does not need a conclusion paragraph."
+    },
+    {
+      "id": "engagement-bait",
+      "regex": "(?i)\\b(?:agree\\?|thoughts\\?|who else\\b|am i wrong\\?)\\s*$",
+      "name": "Reflex engagement bait",
+      "fix": "Ask a question only you could ask, about the specific thing above it."
+    },
+    {
+      "id": "us-date",
+      "regex": "\\b(?:0?[1-9]|1[0-2])/(?:0?[1-9]|[12]\\d|3[01])/(?:20)?\\d\\d\\b",
+      "name": "US date format (MM/DD/YYYY)",
+      "fix": "Write the date the Australian way: 6 October, or 6/10/2026 if it must be numeric."
+    },
+    {
+      "id": "competitor-dig",
+      "regex": "(?i)\\bunlike (?:other|most) (?:partners|consultancies|agencies|vendors)\\b",
+      "name": "Dig at other partners",
+      "fix": "DI never criticises other partners, named or not. Say what DI does instead."
+    }
+  ]
+}

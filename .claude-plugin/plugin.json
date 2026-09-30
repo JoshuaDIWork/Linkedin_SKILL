@@ -1,0 +1,13 @@
+{
+  "name": "di-linkedin",
+  "description": "Eleven Claude skills that run LinkedIn for Design Industries: posts off 21 hook formulas in Michael's voice or the DI company voice, comments, replies, profile scores for the DI team, the weekly plan, DMs, inbox triage, carousels, repurposing of DI articles and webinars, audits, and a humaniser that strips the AI fingerprint, enforces Australian English and scores the draft before it goes out.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Design Industries",
+    "url": "https://di.net.au"
+  },
+  "homepage": "https://github.com/JoshuaDIWork/Linkedin_SKILL",
+  "repository": "https://github.com/JoshuaDIWork/Linkedin_SKILL",
+  "license": "MIT",
+  "keywords": ["linkedin", "content", "writing", "humaniser", "social", "marketing", "atlassian", "design-industries"]
+}
