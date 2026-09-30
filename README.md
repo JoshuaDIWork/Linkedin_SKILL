@@ -240,8 +240,7 @@ templates/voice.md                 the voice profile. Michael's is pre-filled; e
 
 ## Credit
 
-Original pack by Jake Schincariol, [opusjake.ai](https://opusjake.ai), at
-[github.com/Jakeschincariol/linkedin-agent-skill](https://github.com/Jakeschincariol/linkedin-agent-skill).
+O
 DI adaptation by Design Industries, [di.net.au](https://di.net.au).
 
 ## Licence
