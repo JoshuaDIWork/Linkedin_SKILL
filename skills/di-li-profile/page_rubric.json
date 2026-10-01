@@ -1,0 +1,80 @@
+{
+  "version": "1.0-di",
+  "total": 100,
+  "applies_to": "company page",
+  "note": "Twelve items for a LinkedIn company page, built for the Design Industries page. Score each honestly and show the evidence. Each item names its source: 'page' is the visible page (pasted or a screenshot), 'organic' is the linkedin_organic connector or a Page analytics export, 'human' is a run of /di-li-human, 'tags' is tag_status.py. An item whose source is missing is scored n/a, not zero, and the total is reported out of the points that could be scored.",
+  "items": [
+    {
+      "id": "name_tagline",
+      "points": 12,
+      "source": "page",
+      "full_marks": "Page name is the company's name, not a name plus a category. Tagline uses the 120 characters to say who DI helps and what changes for them, carries one proof point, and says 'Atlassian Solution Partner' once with no tier."
+    },
+    {
+      "id": "about_open",
+      "points": 10,
+      "source": "page",
+      "full_marks": "The overview's first two lines, visible before 'see more', name the reader's problem. Not 'Design Industries (DI) are...', not a third-person history."
+    },
+    {
+      "id": "about_body",
+      "points": 10,
+      "source": "page",
+      "full_marks": "Names the current offers the way positioning.md spells them, gives one number as proof, ends on the entry point (Platform Discovery). Current products only: nothing Atlassian has retired, nothing DI no longer sells. Under 2,000 characters, Australian English."
+    },
+    {
+      "id": "page_details",
+      "points": 6,
+      "source": "page",
+      "full_marks": "Website is a LIVE di.net.au page. Industry, company size, headquarters and founded year match positioning.md and the AEO page. Specialties list current offers, not the Server-era service list."
+    },
+    {
+      "id": "logo_cover",
+      "points": 6,
+      "source": "page",
+      "full_marks": "Logo is crisp at 300x300. Cover carries one line of positioning and one way to reach DI, from Tejas. Not a stock skyline, not a default."
+    },
+    {
+      "id": "cta_button",
+      "points": 6,
+      "source": "page, tags",
+      "full_marks": "The custom button (Visit website, Contact us, Learn more) points at a LIVE page with UTM tags, so GA4 can see the click. Not the home page if a better page exists, and never an archived or variant URL."
+    },
+    {
+      "id": "showcase_pinned",
+      "points": 8,
+      "source": "page, tags",
+      "full_marks": "Showcase pages carry current offer names. The pinned post is recent and LIVE, and promotes nothing marked ARCHIVED or CONFIRM in positioning.md."
+    },
+    {
+      "id": "cadence",
+      "points": 10,
+      "source": "organic",
+      "full_marks": "The page posted at least twice a week over the last four weeks, the pace in /di-li-plan, and the latest post is under seven days old."
+    },
+    {
+      "id": "post_quality",
+      "points": 8,
+      "source": "organic, human",
+      "full_marks": "The last 10 page posts each pass /di-li-human: no em dash, three to five hashtags, Australian English, no house-style flags. Original posts outnumber reshares."
+    },
+    {
+      "id": "engagement",
+      "points": 8,
+      "source": "organic",
+      "full_marks": "Median engagement rate across the last 10 organic posts is 2% or better, and comments got a reply inside two hours."
+    },
+    {
+      "id": "team_alignment",
+      "points": 8,
+      "source": "page",
+      "full_marks": "Team members list Design Industries as their current employer, linked to this page, and their headlines use the house wording. One 'Enterprise Partner' on the MD's headline costs this whole item."
+    },
+    {
+      "id": "di_alignment",
+      "points": 8,
+      "source": "page, human",
+      "full_marks": "No archived DI wording, Atlassian product names cased Atlassian's way, Australian English throughout, and nothing on the page contradicts positioning.md or the AEO page at di.net.au/llm-info."
+    }
+  ]
+}

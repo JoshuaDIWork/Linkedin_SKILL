@@ -1,6 +1,6 @@
 {
-  "version": "1.0-di",
-  "note": "Lexicon used by humanize.py and detect.py, tuned for Design Industries. Replacements are plain Australian English and keep the sentence grammatical. 'spelling' is the American-to-Australian pass, 'house' is DI's own banned and preferred phrasing, 'protected' is the list of Atlassian product names and DI terms no pass may touch. Edit freely - it is meant to be DI's.",
+  "version": "1.1-di",
+  "note": "Lexicon used by humanize.py and detect.py, tuned for Design Industries. Replacements are plain Australian English and keep the sentence grammatical. 'spelling' is the American-to-Australian pass, 'corrections' fixes misspellings in either system, 'casing' restores Atlassian's own capitalisation (case-sensitive), 'house' is DI's own banned and preferred phrasing (entries with plural:true also match the plural and keep it), 'archived' is retired DI wording that positioning.md no longer uses, and 'protected' is the list of Atlassian product names and DI terms no pass may touch. Edit freely - it is meant to be DI's.",
   "invisible": [
     {
       "cp": "U+200B",
@@ -535,6 +535,46 @@
       "find": "it is worth noting that",
       "replace": "note that",
       "family": "connectives"
+    },
+    {
+      "find": "transforms",
+      "replace": "changes",
+      "family": "verbs"
+    },
+    {
+      "find": "transform",
+      "replace": "change",
+      "family": "verbs"
+    },
+    {
+      "find": "transformed",
+      "replace": "changed",
+      "family": "verbs"
+    },
+    {
+      "find": "transforming",
+      "replace": "changing",
+      "family": "verbs"
+    },
+    {
+      "find": "AI-powered",
+      "replace": "AI",
+      "family": "adjectives"
+    },
+    {
+      "find": "supercharge",
+      "replace": "speed up",
+      "family": "verbs"
+    },
+    {
+      "find": "supercharges",
+      "replace": "speeds up",
+      "family": "verbs"
+    },
+    {
+      "find": "next-level",
+      "replace": "better",
+      "family": "adjectives"
     }
   ],
   "phrases": [
@@ -2135,17 +2175,20 @@
     {
       "find": "Atlassian Enterprise Partner",
       "replace": "Atlassian Solution Partner",
-      "why": "DI is an Atlassian Solution Partner. Never Enterprise Partner."
+      "why": "DI is an Atlassian Solution Partner. Never Enterprise Partner.",
+      "plural": true
     },
     {
       "find": "Enterprise Partner",
       "replace": "Atlassian Solution Partner",
-      "why": "DI is an Atlassian Solution Partner. Never Enterprise Partner."
+      "why": "DI is an Atlassian Solution Partner. Never Enterprise Partner.",
+      "plural": true
     },
     {
       "find": "Atlassian reseller",
       "replace": "Atlassian Solution Partner",
-      "why": "DI does not describe itself as a reseller."
+      "why": "DI does not describe itself as a reseller.",
+      "plural": true
     },
     {
       "find": "game-changer",
@@ -2221,6 +2264,42 @@
       "find": "game-changing",
       "replace": null,
       "why": "Banned in DI copy. Say what changed and by how much."
+    },
+    {
+      "find": "Platinum Solution Partner",
+      "replace": null,
+      "plural": true,
+      "why": "Say 'Atlassian Solution Partner' with no tier. The tier is unconfirmed (di.net.au says both Gold and Platinum) - see positioning.md."
+    },
+    {
+      "find": "Gold Solution Partner",
+      "replace": null,
+      "plural": true,
+      "why": "Say 'Atlassian Solution Partner' with no tier. The tier is unconfirmed (di.net.au says both Gold and Platinum) - see positioning.md."
+    },
+    {
+      "find": "Platinum Partner",
+      "replace": null,
+      "plural": true,
+      "why": "Say 'Atlassian Solution Partner' with no tier. The tier is unconfirmed (di.net.au says both Gold and Platinum) - see positioning.md."
+    },
+    {
+      "find": "Gold Partner",
+      "replace": null,
+      "plural": true,
+      "why": "Say 'Atlassian Solution Partner' with no tier. The tier is unconfirmed (di.net.au says both Gold and Platinum) - see positioning.md."
+    },
+    {
+      "find": "Platinum Atlassian Partner",
+      "replace": null,
+      "plural": true,
+      "why": "Say 'Atlassian Solution Partner' with no tier. The tier is unconfirmed (di.net.au says both Gold and Platinum) - see positioning.md."
+    },
+    {
+      "find": "Gold Atlassian Partner",
+      "replace": null,
+      "plural": true,
+      "why": "Say 'Atlassian Solution Partner' with no tier. The tier is unconfirmed (di.net.au says both Gold and Platinum) - see positioning.md."
     }
   ],
   "di_terms": [
@@ -2230,23 +2309,23 @@
     },
     {
       "term": "Digital Factory",
-      "explain": "DI's managed-services partnership: strategic hours, licensing optimisation, platform support"
+      "explain": "DI's managed-services partnership: licensing, platform support and strategic improvement hours"
     },
     {
       "term": "Diai Foundry",
-      "explain": "DI's AI consultancy division"
+      "explain": "DI's AI practice, which gets Claude, Rovo and Copilot doing production work"
     },
     {
       "term": "Platform Discovery",
-      "explain": "a complimentary assessment of an Atlassian environment"
+      "explain": "a free assessment of an Atlassian environment"
     },
     {
       "term": "AI Fast Start",
-      "explain": "20 hours to get Rovo and Atlassian Intelligence doing real work"
+      "explain": "a 2-3 week guided sprint that puts Claude, Rovo or Copilot to work"
     },
     {
-      "term": "Security Uplift",
-      "explain": "20 controls, six domains, assess then remediate"
+      "term": "Foundation Package",
+      "explain": "50 hours over 3-4 weeks that produces a 12-month improvement roadmap"
     }
   ],
   "protected": [
@@ -2287,7 +2366,16 @@
     "HubSpot",
     "Tempo",
     "ScriptRunner",
-    "di.net.au"
+    "di.net.au",
+    "DI AI Foundry",
+    "Rovo Dev",
+    "Foundation Package",
+    "Microsoft Copilot",
+    "Copilot",
+    "Claude",
+    "SMB1001",
+    "Jira Optimisation",
+    "MCP Integration Services"
   ],
   "hashtag_limit": 5,
   "structures": [
@@ -2347,7 +2435,7 @@
     },
     {
       "id": "engagement-bait",
-      "regex": "(?i)\\b(?:agree\\?|thoughts\\?|who else\\b|am i wrong\\?)\\s*$",
+      "regex": "(?i)(?:\\b(?:agree\\?|thoughts\\?|who else\\b|am i wrong\\?)|\\bready to [^.!?\\n]{1,40}\\?)\\s*$",
       "name": "Reflex engagement bait",
       "fix": "Ask a question only you could ask, about the specific thing above it."
     },
@@ -2362,6 +2450,133 @@
       "regex": "(?i)\\bunlike (?:other|most) (?:partners|consultancies|agencies|vendors)\\b",
       "name": "Dig at other partners",
       "fix": "DI never criticises other partners, named or not. Say what DI does instead."
+    },
+    {
+      "id": "trust-claim",
+      "regex": "(?i)\\b(?:trusted|relied on|chosen|loved) by\\s+(?!\\d)(?:leading\\s+|top\\s+|australian\\s+|global\\s+)*(?:enterprises|organi[sz]ations|businesses|companies|teams|brands|clients|customers|leaders)\\b",
+      "name": "Unproven trust claim",
+      "fix": "Name an approved client, or give the number (\"40 Australian enterprises\"), or cut the line."
+    },
+    {
+      "id": "staccato",
+      "regex": "(?m)(?:^|(?<=[.!?] ))(?:[A-Z][\\w'&-]*(?: [\\w'&-]+){0,2}\\. ){2}[A-Z][\\w'&-]*(?: [\\w'&-]+){0,2}\\.",
+      "name": "Staccato fragment triad",
+      "fix": "Three clipped fragments in a row is the model's rhythm. Write one real sentence."
+    }
+  ],
+  "corrections": [
+    {
+      "find": "licencing",
+      "replace": "licensing",
+      "why": "Not a word in Australian or American English. 'Licence' is the noun; 'licensing' is always spelt with an s."
+    },
+    {
+      "find": "licenced",
+      "replace": "licensed",
+      "why": "The verb is 'license', so 'licensed'."
+    },
+    {
+      "find": "licencee",
+      "replace": "licensee",
+      "why": "Spelt with an s."
+    }
+  ],
+  "casing": [
+    {
+      "find": "JIRA",
+      "replace": "Jira"
+    },
+    {
+      "find": "BitBucket",
+      "replace": "Bitbucket"
+    },
+    {
+      "find": "OpsGenie",
+      "replace": "Opsgenie"
+    },
+    {
+      "find": "StatusPage",
+      "replace": "Statuspage"
+    },
+    {
+      "find": "Atlassian intelligence",
+      "replace": "Atlassian Intelligence"
+    },
+    {
+      "find": "JIRA Service Management",
+      "replace": "Jira Service Management"
+    },
+    {
+      "find": "JIRA Software",
+      "replace": "Jira Software"
+    },
+    {
+      "find": "Jira service management",
+      "replace": "Jira Service Management"
+    },
+    {
+      "find": "Jira Service Desk",
+      "replace": "Jira Service Management",
+      "why": "Renamed by Atlassian in 2020."
+    },
+    {
+      "find": "ROVO",
+      "replace": "Rovo"
+    },
+    {
+      "find": "TRELLO",
+      "replace": "Trello"
+    },
+    {
+      "find": "CONFLUENCE",
+      "replace": "Confluence"
+    }
+  ],
+  "archived": [
+    {
+      "find": "Growth tier",
+      "replace_with": "Starter, Professional or Enterprise tier",
+      "why": "Digital Factory tiers are now Starter, Professional and Enterprise."
+    },
+    {
+      "find": "Growth through Enterprise",
+      "replace_with": "Starter, Professional or Enterprise",
+      "why": "Digital Factory tiers are now Starter, Professional and Enterprise."
+    },
+    {
+      "find": "AWS Hosting",
+      "replace_with": "Digital Factory",
+      "why": "Not offered on di.net.au. Old LinkedIn page wording."
+    },
+    {
+      "find": "Ad Hoc Atlassian Support",
+      "replace_with": "Digital Factory Platform Support",
+      "why": "Old LinkedIn page wording. Support now sits inside Digital Factory."
+    },
+    {
+      "find": "Continual Improvement for ROI",
+      "replace_with": "Digital Factory strategic improvement hours",
+      "why": "Old LinkedIn page and showcase wording."
+    },
+    {
+      "find": "Atlassian Managed Services",
+      "replace_with": "Digital Factory",
+      "why": "The managed service is called Digital Factory."
+    },
+    {
+      "find": "Free Atlassian Platform Health Check",
+      "replace_with": "Platform Discovery",
+      "why": "The free entry point is Platform Discovery."
+    },
+    {
+      "find": "Free Demo",
+      "replace_with": "Platform Discovery or the free security assessment",
+      "why": "Not an offer in positioning.md."
+    },
+    {
+      "find": "Security Uplift",
+      "replace_with": "the free 30-minute security assessment",
+      "why": "Not on di.net.au as of 1 Oct 2026. Confirm with Michael before using."
     }
   ]
 }

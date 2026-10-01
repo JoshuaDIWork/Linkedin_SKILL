@@ -20,11 +20,19 @@ Five passes, in this order:
                  preserving capitalisation.
   4. SPELLING    American to Australian English: organization -> organisation,
                  optimize -> optimise, center -> centre, and 300-odd more,
-                 preserving capitalisation.
-  5. HOUSE       DI's own phrasing: "Enterprise Partner" becomes "Atlassian
-                 Solution Partner", filler is deleted, and banned phrases with
-                 no safe replacement ("game-changer", "silver bullet") are
-                 flagged for a rewrite.
+                 preserving capitalisation. Then the misspellings that are
+                 wrong in both systems: "Licencing" -> "Licensing".
+  5. HOUSE       DI's own phrasing: "Enterprise Partner(s)" becomes "Atlassian
+                 Solution Partner(s)", plural kept. Filler is deleted, and
+                 banned phrases with no safe replacement ("game-changer",
+                 "Platinum Solution Partner") are flagged for a rewrite.
+  6. CASING      Atlassian's own capitalisation, case-sensitive: JIRA -> Jira,
+                 BitBucket -> Bitbucket, OpsGenie -> Opsgenie. URLs and issue
+                 keys such as JIRA-123 are left alone.
+
+Retired DI wording listed under "archived" in slop.json ("Growth tier",
+"AWS Hosting") is flagged with what replaced it, never auto-swapped, because
+the right replacement depends on the sentence.
 
 Structural tells (rule-of-three, "not just X, it's Y", hashtag walls, a DI
 term used without explanation) are REPORTED, never auto-rewritten - rewriting
@@ -73,8 +81,24 @@ def _cp(spec):
     return int(spec[2:], 16)
 
 
-def _word_pattern(find, flags=re.IGNORECASE):
-    return re.compile(r"\b" + re.escape(find).replace(r"\ ", r"\s+") + r"\b", flags)
+def _word_pattern(find, flags=re.IGNORECASE, plural=False):
+    """Whole-word pattern for a lexicon entry. With plural=True the entry
+    also matches its plural, captured as group 1, so "Enterprise Partner"
+    catches "Enterprise Partners" and the replacement can keep the s."""
+    body = re.escape(find).replace(r"\ ", r"\s+")
+    tail = r"(s)?\b" if plural else r"\b"
+    return re.compile(r"\b" + body + tail, flags)
+
+
+def _outside_urls(text, fn):
+    """Apply fn to every stretch of text that is not a URL or email."""
+    out, last = [], 0
+    for m in URL_RE.finditer(text):
+        out.append(fn(text[last:m.start()]))
+        out.append(m.group(0))
+        last = m.end()
+    out.append(fn(text[last:]))
+    return "".join(out)
 
 
 def protect(text, lex):
@@ -164,14 +188,23 @@ def _replace_entries(text, entries, key_find="find", key_replace="replace", fami
                      key=lambda e: len(e[key_find]), reverse=True)
     for entry in entries:
         find = entry[key_find]
-        pattern = _word_pattern(find)
-        found = pattern.findall(text)
+        plural = bool(entry.get("plural"))
+        pattern = _word_pattern(find, plural=plural)
+        found = list(pattern.finditer(text))
         if not found:
             continue
-        hits.append({"find": find, "replace": entry[key_replace] or "(deleted)",
+        hits.append({"find": find + ("(s)" if plural else ""),
+                     "replace": entry[key_replace] or "(deleted)",
                      "count": len(found),
                      "family": entry.get("family", family or "")})
-        text = pattern.sub(lambda m: _match_case(m.group(0), entry[key_replace]), text)
+
+        def swap(m, repl=entry[key_replace], plural=plural):
+            out = _match_case(m.group(0), repl)
+            if plural and m.group(1) and out:
+                out += m.group(1)
+            return out
+
+        text = pattern.sub(swap, text)
     return text, hits
 
 
@@ -198,10 +231,43 @@ def pass_lexical(text, lex):
 
 
 def pass_spelling(text, lex):
-    """American to Australian English. Protected terms were stashed already,
-    so 'Data Center' never reaches this pass."""
+    """American to Australian English, then misspellings that are wrong in
+    both systems. Protected terms were stashed already, so 'Data Center'
+    never reaches this pass."""
     text, hits = _replace_entries(text, lex.get("spelling", []), family="spelling")
+    text, fixes = _replace_entries(text, lex.get("corrections", []), family="correction")
+    return text, hits + fixes
+
+
+def casing_pattern(find):
+    """Case-sensitive whole-word match that skips issue keys like JIRA-123."""
+    return re.compile(r"\b" + re.escape(find).replace(r"\ ", r"\s+") + r"\b(?!-\d)")
+
+
+def pass_casing(text, lex):
+    """Atlassian's own capitalisation. Runs before protection, because
+    'Jira service management' starts with the protected word 'Jira', and
+    skips URLs itself."""
+    hits = []
+    for entry in sorted(lex.get("casing", []), key=lambda e: len(e["find"]), reverse=True):
+        pattern = casing_pattern(entry["find"])
+        n = sum(len(pattern.findall(seg)) for seg in URL_RE.split(text))
+        if not n:
+            continue
+        hits.append({"find": entry["find"], "replace": entry["replace"], "count": n})
+        text = _outside_urls(text, lambda seg, p=pattern, r=entry["replace"]: p.sub(r, seg))
     return text, hits
+
+
+def scan_archived(text, lex):
+    """Retired DI wording. Flagged with what replaced it, never swapped."""
+    flags = []
+    for entry in lex.get("archived", []):
+        n = len(_word_pattern(entry["find"]).findall(text))
+        if n:
+            flags.append({"name": f'"{entry["find"]}" is archived DI wording', "count": n,
+                          "fix": f'Use {entry["replace_with"]}. {entry["why"]}'})
+    return flags
 
 
 def pass_house(text, lex):
@@ -214,7 +280,7 @@ def pass_house(text, lex):
     for entry in house:
         if entry.get("replace") is not None:
             continue
-        n = len(_word_pattern(entry["find"]).findall(text))
+        n = len(_word_pattern(entry["find"], plural=bool(entry.get("plural"))).findall(text))
         if n:
             flags.append({"name": f'"{entry["find"]}"', "count": n, "fix": entry["why"]})
     for entry in lex.get("spelling_flag", []):
@@ -279,6 +345,7 @@ def humanize(text, lex):
     # House replacements run on the raw text, before protection, because
     # "Atlassian Enterprise Partner" overlaps the protected word "Atlassian".
     text, house, _ = pass_house(text, lex)
+    text, casing = pass_casing(text, lex)
     text, stash = protect(text, lex)
     text, inv = pass_invisible(text, lex)
     text, typo = pass_typographic(text, lex)
@@ -292,7 +359,9 @@ def humanize(text, lex):
         "lexical": lexi,
         "spelling": spell,
         "house": house,
-        "structures": scan_structures(text, lex) + house_flags + scan_di_terms(text, lex),
+        "casing": casing,
+        "structures": (scan_structures(text, lex) + house_flags
+                       + scan_archived(text, lex) + scan_di_terms(text, lex)),
     }
 
 
@@ -300,7 +369,7 @@ def render_report(report, out=sys.stderr):
     def head(title):
         print(f"\n{title}\n" + "-" * len(title), file=out)
 
-    total = sum(h["count"] for k in ("invisible", "typographic", "lexical", "spelling", "house")
+    total = sum(h["count"] for k in ("invisible", "typographic", "lexical", "spelling", "house", "casing")
                 for h in report[k])
 
     head("HUMANISE REPORT")
@@ -327,8 +396,12 @@ def render_report(report, out=sys.stderr):
         head("5. DI HOUSE STYLE")
         for h in report["house"]:
             print(f"  {h['count']:>3}x  {h['find']}  -> {h['replace']}", file=out)
+    if report["casing"]:
+        head("6. ATLASSIAN CASING")
+        for h in report["casing"]:
+            print(f"  {h['count']:>3}x  {h['find']}  -> {h['replace']}", file=out)
     if report["structures"]:
-        head("6. FLAGGED FOR REWRITE  (not auto-fixed - rewrite these yourself)")
+        head("7. FLAGGED FOR REWRITE  (not auto-fixed - rewrite these yourself)")
         for h in report["structures"]:
             print(f"  {h['count']:>3}x  {h['name']}\n        {h['fix']}", file=out)
     if not any(report.values()):

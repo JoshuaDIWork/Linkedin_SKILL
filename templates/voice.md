@@ -26,8 +26,9 @@ at the answers.
 - **Who I am writing for:** IT leaders, Heads of Digital, CTOs and CIOs at
   mid-to-large Australian organisations, and the Atlassian admins who keep
   their platforms alive.
-- **What I sell:** Platform Discovery, AI Fast Start, Security Uplift, Digital
-  Factory partnerships, Diai Foundry. Details and the CTA map are in
+- **What I sell:** Platform Discovery, AI Fast Start (Claude, Rovo or
+  Copilot), MCP Integration Services, Digital Factory partnerships, Diai
+  Foundry. Details and the CTA map are in
   `positioning.md`.
 
 ## What I sound like
@@ -76,9 +77,13 @@ Real numbers, outcomes and stories I am happy to put my name on. The skills
 will never invent one, so if this section is empty, every draft comes back
 with `{{number}}` in it.
 
-- 25+ years delivering Atlassian
-- 25-person team, Melbourne
+Every row here must match a LIVE row in `positioning.md`. If the two
+disagree, `positioning.md` wins and this list is out of date.
+
+- Delivering since 2000, 200+ deployments
+- From 50-person teams to 7,000+ user enterprises
+- Melbourne team (headcount CONFIRM in `positioning.md`)
 - Sundown Rule: same-day response to every client enquiry
-- AI Fast Start: 20 hours, $5,000
-- Security Uplift: 20 controls, six domains
+- SMB1001 Gold certified
+- AI Fast Start: 2-3 weeks, from $5,000 + GST
 -

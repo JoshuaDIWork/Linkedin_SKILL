@@ -71,8 +71,25 @@ def words(text):
     return WORD_RE.findall(text)
 
 
-def _word_pattern(find, flags=re.IGNORECASE):
-    return re.compile(r"\b" + re.escape(find).replace(r"\ ", r"\s+") + r"\b", flags)
+URL_RE = re.compile(r"https?://\S+|www\.\S+|\S+@\S+\.\S+")
+
+
+def _word_pattern(find, flags=re.IGNORECASE, plural=False):
+    body = re.escape(find).replace(r"\ ", r"\s+")
+    return re.compile(r"\b" + body + (r"(?:s)?\b" if plural else r"\b"), flags)
+
+
+def _count_consuming(text, entries, plural_key="plural"):
+    """Count lexicon hits longest-first, blanking each match so that
+    'Atlassian Enterprise Partners' is one hit, not two."""
+    found = []
+    for entry in sorted(entries, key=lambda e: len(e["find"]), reverse=True):
+        pattern = _word_pattern(entry["find"], plural=bool(entry.get(plural_key)))
+        n = len(pattern.findall(text))
+        if n:
+            found.append((entry, n))
+            text = pattern.sub(lambda m: " " * len(m.group(0)), text)
+    return found
 
 
 def strip_protected(text, lex):
@@ -93,13 +110,16 @@ def check_burstiness(text):
     return score, f"variation {cv:.2f} across {len(lens)} sentences (want 0.55+)"
 
 
-def check_specificity(text):
-    """Numbers, names and concrete nouns. Slop is abstract."""
+def check_specificity(text, lex=None):
+    """Numbers, names and concrete nouns. Slop is abstract. Atlassian
+    product names and DI offer names do not count as names here: a list of
+    products is not a fact, and every DI paragraph is full of them."""
     w = words(text)
     if len(w) < 25:
         return 50.0, "too short to judge"
     per100 = 100 / len(w)
-    hits = len(NUMBERS.findall(text)) + len(set(PROPER.findall(text)))
+    named = strip_protected(text, lex) if lex else text
+    hits = len(NUMBERS.findall(text)) + len(set(PROPER.findall(named)))
     density = hits * per100
     score = scale(density, human=6.0, machine=0.5)
     return score, f"{hits} concrete markers, {density:.1f} per 100 words (want 4+)"
@@ -190,17 +210,40 @@ def check_house(text, lex):
         if n:
             us += n
             us_found.append(entry["find"])
+
+    # Corrections ("Licencing") are misspellings in both systems.
+    for entry, n in _count_consuming(body, lex.get("corrections", [])):
+        us += n
+        us_found.append(entry["find"])
     spelling_score = scale(us * per100, human=0.0, machine=1.5)
 
+    # House phrases match the raw text, longest first, so the protected word
+    # "Atlassian" inside "Atlassian reseller" still counts and one phrase is
+    # never penalised twice. Partner wording matches plurals too.
     banned = 0
-    for entry in lex.get("house", []):
-        n = len(_word_pattern(entry["find"]).findall(body))
-        if n:
-            banned += n
-            problems.append(entry["find"])
     penalty = 0
-    for p in problems:
-        penalty += 45 if "Partner" in p or "reseller" in p else 20
+    for entry, n in _count_consuming(text, lex.get("house", [])):
+        banned += n
+        problems.append(entry["find"])
+        penalty += 45 if "Partner" in entry["find"] or "reseller" in entry["find"] else 20
+
+    # Atlassian's own capitalisation, case-sensitive, URLs and issue keys
+    # excluded. Miscased product names are a house-style problem, not a
+    # detector one.
+    plain = URL_RE.sub(" ", text)
+    casing = 0
+    for entry in lex.get("casing", []):
+        n = len(re.findall(r"\b" + re.escape(entry["find"]) + r"\b(?!-\d)", plain))
+        if n:
+            casing += n
+            problems.append(entry["find"])
+    penalty += 10 * casing
+
+    archived = 0
+    for entry, n in _count_consuming(text, lex.get("archived", []), plural_key="_none"):
+        archived += n
+        problems.append(f'archived: {entry["find"]}')
+    penalty += 15 * archived
 
     limit = lex.get("hashtag_limit", 5)
     tags = len(re.findall(r"(?<!\w)#\w+", text))
@@ -228,7 +271,8 @@ def check_house(text, lex):
     detail = f"{us} American spelling(s)"
     if us_found:
         detail += " (" + ", ".join(sorted(set(us_found))[:4]) + (", ..." if len(set(us_found)) > 4 else "") + ")"
-    detail += f", {banned} banned phrase(s), {tags} hashtag(s), {em} em dash"
+    detail += (f", {banned} banned phrase(s), {casing} miscased, {archived} archived, "
+               f"{tags} hashtag(s), {em} em dash")
     if problems:
         detail += " [" + ", ".join(problems[:4]) + "]"
     if unexplained:
@@ -242,7 +286,7 @@ CHECKS = ["BURSTINESS", "SPECIFICITY", "SLOP DENSITY", "FINGERPRINT", "VOICE", "
 def run(text, lex):
     results = {}
     results["BURSTINESS"] = check_burstiness(text)
-    results["SPECIFICITY"] = check_specificity(text)
+    results["SPECIFICITY"] = check_specificity(text, lex)
     results["SLOP DENSITY"] = check_slop(text, lex)
     results["FINGERPRINT"] = check_fingerprint(text)
     results["VOICE"] = check_voice(text, lex)
