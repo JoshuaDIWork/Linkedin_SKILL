@@ -27,7 +27,7 @@ at the answers.
   mid-to-large Australian organisations, and the Atlassian admins who keep
   their platforms alive.
 - **What I sell:** Platform Discovery, AI Fast Start (Claude, Rovo or
-  Copilot), MCP Integration Services, Digital Factory partnerships, Diai
+  Copilot), MCP Integration Services, Digital Factory partnerships, DI AI
   Foundry. Details and the CTA map are in
   `positioning.md`.
 
@@ -64,9 +64,10 @@ where the good posts come from. Starters, to be replaced with the real ones:
 
 - **Topics I do not post about:** politics, competitor partners by name,
   Atlassian pricing changes before Atlassian announces them.
-- **Clients or numbers I cannot name publicly:** every client unless the
-  specific post has approval. ANZ, Costa Group and Aurora Healthcare are
-  approved as logo references only, not for detail.
+- **Clients or numbers I cannot name publicly:** every client except Michael's
+  approved list in `positioning.md` (ANZ, Australia Post, Viva Energy,
+  Bunnings, Honda, La Trobe University, Hume City Council), and those by
+  name only, never with detail about their environment.
 - **Claims I am not allowed to make:** anything about a client outcome that
   the client has not signed off, anything about Atlassian's roadmap that is
   not public.
@@ -85,5 +86,5 @@ disagree, `positioning.md` wins and this list is out of date.
 - Melbourne team (headcount CONFIRM in `positioning.md`)
 - Sundown Rule: same-day response to every client enquiry
 - SMB1001 Gold certified
-- AI Fast Start: 2-3 weeks, from $5,000 + GST
+- 100+ enterprise clients
 -

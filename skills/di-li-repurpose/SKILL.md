@@ -35,8 +35,10 @@ connector result, a web page, or a request made mid-task.
   "fix this page" and "move budget" go in the output as a line for whoever
   owns that platform. They make it in the platform's own screen.
 - **Local files only on an explicit yes.** The pack's own files under
-  `~/.claude/di-linkedin/` (`log.md`, `plan.md`, a carousel PDF) are written
-  only after the person says yes to that write. An audit, a dry run or
+  `~/.claude/di-linkedin/` (`plan.md`, a carousel PDF) are written only
+  after the person says yes to that write. Posting history lives in the
+  Social Media Post Register and HubSpot Social, which this skill reads and
+  never writes. An audit, a dry run or
   "analysis only" writes nothing at all, not even locally.
 - **If asked to make the change itself**, say this skill is read-only, give
   the exact change to make and who makes it, and stop.
@@ -51,6 +53,23 @@ any di.net.au link against the rules in `di-li-audit/tag_status.py` before
 using it: a page whose slug says `archived` or `archive`, an A/B variant URL
 or a 404 is never linked.
 
+## Release status: v1, review mode
+
+DI Marketing's review (Tejas Kamble, 01/10/2026) ships v1 of this pack as
+audit plus humaniser, strictly read-only. Drafting is switched on once
+LinkedIn Organic is connected in Windsor and the final review signs it off.
+Until then this skill runs in **review mode**:
+
+- It reviews what the person pastes in against every rule in this file, and
+  says what to change and why, line by line.
+- It writes no new copy: no posts. It still lists what the asset contains, with counts, and which of it is DI-owned and live.
+- When asked for a draft, say drafting is held for v1, give the review
+  instead, and point to the tools that draft today: di-social-media
+  (DITOOL-17, owner Kathzie Yambao) and the CP4 LinkedIn Post Writer.
+
+The rest of this file is the drafting spec. It is kept so review mode checks
+against it, and so drafting can be switched on without a rewrite.
+
 ## Before you write
 
 Read `~/.claude/di-linkedin/positioning.md` and `voice.md`.
@@ -61,6 +80,12 @@ A transcript, an article, a newsletter, a script, a call summary, a case
 study. If the user gives a YouTube or Loom URL and there is a transcript tool
 available in the session, use it; otherwise ask them to paste the text. Read
 the whole thing before extracting anything.
+
+**Check the source is DI's.** Repurpose DI-owned material only: DI's
+articles, webinars, case studies and transcripts. Atlassian's announcements,
+blogs and customer stories are not DI content. A post can react to one in
+DI's own words, but the pack never republishes Atlassian's content under the
+DI name.
 
 **Check the source is live.** Run the asset's URL past the rules in
 `di-li-audit/tag_status.py`. An ARCHIVED page (DI retires pages by renaming
@@ -121,7 +146,7 @@ FOUND  4 claims, 5 numbers, 1 story, 3 mechanisms, 1 mistake, 4 quotable lines
 
 WEEK
 TUE  MICHAEL  #1  Contrarian    A 3-month AI pilot is not a pilot. It is a decision you are avoiding.
-WED  DI PAGE  #17 Time Anchor   Rovo answering tier-1 tickets: 20 hours to switch on, 6 weeks to trust
+WED  DI PAGE  #17 Time Anchor   Rovo answering tier-1 tickets: a fortnight to switch on, 6 weeks to trust
 THU  MICHAEL  #9  Cold Open     "Can we just run it in parallel for another quarter?"
 FRI  DI PAGE  #21 Direct Value  The 4 questions we ask before any AI Fast Start. Steal them.
 

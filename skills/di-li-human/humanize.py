@@ -259,6 +259,46 @@ def pass_casing(text, lex):
     return text, hits
 
 
+CLAIM_RE = re.compile(
+    r"(?i)\b\d[\d,]*\+?\s+(?:enterprise\s+|australian\s+|government\s+)?"
+    r"(?:clients|customers|enterprises|organi[sz]ations|deployments|implementations|projects|partners)\b")
+
+
+def scan_claims(text, lex):
+    """House rules that need more than a regex: scale claims that are not
+    in the sourced list, client names that are not on Michael's approved
+    list, and a '2-3 weeks' that does not name the Claude or Rovo track."""
+    flags = []
+    sourced = [p.lower() for p in lex.get("sourced_claims", {}).get("phrases", [])]
+    for m in CLAIM_RE.finditer(text):
+        claim = m.group(0)
+        if not any(claim.lower().startswith(p) or p.startswith(claim.lower()) for p in sourced):
+            flags.append({"name": f'Unsourced scale claim "{claim}"', "count": 1,
+                          "fix": "Use a sourced number from positioning.md Proof, or add this one to "
+                                 "sourced_claims in slop.json with its source."})
+    for name in lex.get("unapproved_clients", {}).get("names", []):
+        n = len(_word_pattern(name, 0).findall(text))
+        if n:
+            flags.append({"name": f'"{name}" is not on the approved client list', "count": n,
+                          "fix": "Only ANZ, Australia Post, Viva Energy, Bunnings, Honda, La Trobe "
+                                 "University and Hume City Council may be named. Anonymise."})
+    tl = lex.get("timeline")
+    if tl:
+        for m in re.finditer(tl["regex"], text):
+            window = text[max(0, m.start() - 120):m.end() + 120]
+            named = lambda words: [w for w in words
+                                   if re.search(r"\b" + re.escape(w) + r"(?!\s+Dev)\b", window)]
+            outside = [w for w in tl.get("out_of_scope", [])
+                       if re.search(r"\b" + re.escape(w) + r"\b", window)]
+            if not named(tl["scope"]):
+                flags.append({"name": f'"{m.group(0)}" without the Claude or Rovo track', "count": 1,
+                              "fix": tl["fix"]})
+            elif outside:
+                flags.append({"name": f'"{m.group(0)}" next to {", ".join(outside)}', "count": 1,
+                              "fix": tl["fix"]})
+    return flags
+
+
 def scan_archived(text, lex):
     """Retired DI wording. Flagged with what replaced it, never swapped."""
     flags = []
@@ -277,12 +317,17 @@ def pass_house(text, lex):
     text, hits = _replace_entries(text, house, family="house")
     text = _tidy(text)
     flags = []
-    for entry in house:
+    work = text
+    # Longest first, blanking each match, so "Atlassian Platinum Solution
+    # Partners" is one flag and not three.
+    for entry in sorted(house, key=lambda e: len(e["find"]), reverse=True):
         if entry.get("replace") is not None:
             continue
-        n = len(_word_pattern(entry["find"], plural=bool(entry.get("plural"))).findall(text))
+        pattern = _word_pattern(entry["find"], plural=bool(entry.get("plural")))
+        n = len(pattern.findall(work))
         if n:
             flags.append({"name": f'"{entry["find"]}"', "count": n, "fix": entry["why"]})
+            work = pattern.sub(lambda m: " " * len(m.group(0)), work)
     for entry in lex.get("spelling_flag", []):
         n = len(_word_pattern(entry["find"]).findall(text))
         if n:
@@ -361,7 +406,8 @@ def humanize(text, lex):
         "house": house,
         "casing": casing,
         "structures": (scan_structures(text, lex) + house_flags
-                       + scan_archived(text, lex) + scan_di_terms(text, lex)),
+                       + scan_archived(text, lex) + scan_claims(text, lex)
+                       + scan_di_terms(text, lex)),
     }
 
 

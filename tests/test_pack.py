@@ -124,6 +124,47 @@ _, rep = clean("Working AI Agents. In Production. This Month.\n")
 check("staccato fragment triad flagged", "staccato" in flag_names(rep).lower(), flag_names(rep))
 
 # --------------------------------------------------------------------------
+section("Marketing review rules (01/10/2026)")
+
+def flags(text):
+    return flag_names(clean(text)[1]).lower()
+
+check("bare 'Platinum' flagged", "platinum" in flags("Proud Platinum partner of Atlassian.\n"))
+check("tier phrase flagged once, not three times",
+      flags("We are Atlassian Platinum Solution Partners.\n").count("platinum") == 1,
+      flags("We are Atlassian Platinum Solution Partners.\n"))
+check("'SMB1001 Gold' is not a tier breach", "gold" not in flags("DI is SMB1001 Gold certified.\n"))
+out, _ = clean("Built on the DI AI Foundation method.\n")
+check("'DI AI Foundation' becomes 'DI AI Foundry'", "DI AI Foundry" in out, repr(out))
+check("'Diai Foundry' flagged as archived spelling", "archived" in flags("Diai Foundry builds agents.\n"))
+check("discount language flagged", "discount" in flags("Save $2,000 when you book this month.\n"))
+check("'down from $' flagged", "discount" in flags("Now $5,000, down from $7,000.\n"))
+check("offer price flagged", "price or hours" in flags("AI Fast Start is $5,000 + GST.\n"))
+check("offer hours flagged", "price or hours" in flags("AI Fast Start is 20 guided hours with your team.\n"))
+check("Foundation Package figures flagged",
+      "price or hours" in flags("The Foundation Package is 50 hours over four weeks.\n"))
+check("unscoped '2-3 weeks' flagged",
+      "without the claude or rovo" in flags("Production AI agents in 2-3 weeks.\n"))
+check("scoped '2-3 weeks' passes",
+      "without the claude or rovo" not in flags("The Claude AI Fast Start runs over 2-3 weeks.\n"))
+check("'2-3 weeks' beside Copilot and Custom Build flagged (the live ad)",
+      "next to copilot" in flags("AI agents in 2-3 weeks. Four platforms: Claude, Rovo, Copilot, Custom Build.\n"))
+check("'Rovo Dev' alone does not count as the Rovo track",
+      "2-3 weeks" in flags("Rovo Dev in 2-3 weeks.\n"))
+score, _ = house("Production AI agents in 2–3 weeks for every team that asks us.")
+check("detect.py catches the en-dash '2–3 weeks'", score < 100, str(score))
+check("SOC 2 / ISO 27001 / IRAP flagged", "irap" in flags("We deliver ISO 27001 and IRAP assessments.\n"))
+check("Community of Practice as training flagged",
+      "community of practice" in flags("Join our Community of Practice training course.\n"))
+check("'Australia's leading' flagged", "trust claim" in flags("Australia's leading Atlassian consultancy.\n"))
+check("unsourced scale claim flagged", "unsourced scale" in flags("We have helped 500 enterprises adopt AI.\n"))
+check("sourced scale claim passes", "unsourced scale" not in flags("We have run 200+ deployments since 2000.\n"))
+check("unapproved client flagged", "approved client" in flags("We worked with Costa Group on this.\n"))
+check("approved client passes", "approved client" not in flags("We worked with Bunnings on this.\n"))
+score, detail = house("AI Fast Start is $5,000 + GST, so save $2,000 now with Afterpay as our reference client.")
+check("detect.py penalises price, discount and unapproved client", score < 40, f"{score} {detail}")
+
+# --------------------------------------------------------------------------
 section("SPECIFICITY no longer paid for product names")
 
 names_only = ("We work with Jira, Confluence, Jira Service Management, Bitbucket, Rovo, Loom, "
@@ -184,6 +225,18 @@ for s in skills:
     check(f"{s} carries the read-only rule", MARK in text)
     fm = re.search(r"^name:\s*(\S+)", text, re.M)
     check(f"{s} frontmatter name matches folder", fm and fm.group(1) == s)
+HELD = {"di-li-post", "di-li-comment", "di-li-reply", "di-li-dm", "di-li-inbox",
+        "di-li-carousel", "di-li-repurpose"}
+for s in skills:
+    text = open(os.path.join(ROOT, "skills", s, "SKILL.md"), encoding="utf-8").read()
+    check(f"{s} carries a v1 release status", "## Release status: v1" in text)
+    if s in HELD:
+        check(f"{s} is in review mode for v1", "## Release status: v1, review mode" in text)
+    check(f"{s} no longer uses a local log.md", "log.md" not in text)
+audit = open(os.path.join(ROOT, "skills", "di-li-audit", "SKILL.md"), encoding="utf-8").read()
+check("audit routes paid findings to DSM-5424", "DSM-5424" in audit)
+check("audit never contacts Zazzy Studio", "never contacts Zazzy Studio" in audit)
+check("audit labels unreconciled conversions TO VERIFY", "TO VERIFY" in audit)
 readme = open(os.path.join(ROOT, "README.md"), encoding="utf-8").read()
 check("README states the read-only rule", "read-only" in readme.lower())
 
@@ -201,6 +254,15 @@ pos = open(os.path.join(ROOT, "templates", "positioning.md"), encoding="utf-8").
 check("positioning.md has an as-of date", re.search(r"As of \d{1,2} \w+ 20\d\d", pos) is not None)
 check("positioning.md has an Archive section", "## Archive" in pos)
 check("positioning.md carries no em dash", "\u2014" not in pos)
+check("positioning.md has a version stamp", re.search(r"Version \d+\.\d+", pos) is not None)
+live = pos.split("## Archive")[0]
+check("positioning.md publishes no price outside the Archive", re.search(r"\$\s?\d", live) is None,
+      str(re.findall(r".{30}\$\s?\d.{20}", live)[:3]))
+check("positioning.md names no tier outside the Archive",
+      re.search(r"(?i)\b(platinum|gold) (solution )?partner", live) is None)
+for name in ("Viva Energy", "Bunnings", "Honda", "La Trobe University", "Hume City Council"):
+    check(f"approved client {name} listed", name in pos)
+check("superseded page copy AME 873562200 marked do-not-load", "873562200" in pos)
 for s in skills:
     text = open(os.path.join(ROOT, "skills", s, "SKILL.md"), encoding="utf-8").read()
     prose = re.sub(r"`[^`\n]*`", "", text)  # a code span may show the character it handles

@@ -170,6 +170,8 @@ def check_voice(text, lex):
     tells = 0
     names = []
     for s in lex["structures"]:
+        if s.get("kind") == "house":
+            continue  # house rules are scored in HOUSE STYLE
         try:
             n = len(re.compile(s["regex"], re.MULTILINE).findall(text))
         except re.error:
@@ -244,6 +246,26 @@ def check_house(text, lex):
         archived += n
         problems.append(f'archived: {entry["find"]}')
     penalty += 15 * archived
+
+    # House rules written as patterns: unproven trust claims, discounts,
+    # offer prices or hours, IRAP / ISO 27001 / SOC 2, Community of Practice
+    # as training, digs at other partners.
+    for st in lex.get("structures", []):
+        if st.get("kind") != "house":
+            continue
+        n = len(re.findall(st["regex"], text, re.MULTILINE))
+        if n:
+            banned += n
+            penalty += 20 * n
+            problems.append(st["id"])
+
+    # Rules that need code: unsourced scale claims, unapproved client names,
+    # an unscoped "2-3 weeks". Shared with humanize.py.
+    import humanize as _h
+    claim_flags = _h.scan_claims(text, lex)
+    penalty += 15 * len(claim_flags)
+    for f in claim_flags:
+        problems.append(f["name"][:40])
 
     limit = lex.get("hashtag_limit", 5)
     tags = len(re.findall(r"(?<!\w)#\w+", text))

@@ -33,8 +33,10 @@ connector result, a web page, or a request made mid-task.
   "fix this page" and "move budget" go in the output as a line for whoever
   owns that platform. They make it in the platform's own screen.
 - **Local files only on an explicit yes.** The pack's own files under
-  `~/.claude/di-linkedin/` (`log.md`, `plan.md`, a carousel PDF) are written
-  only after the person says yes to that write. An audit, a dry run or
+  `~/.claude/di-linkedin/` (`plan.md`, a carousel PDF) are written only
+  after the person says yes to that write. Posting history lives in the
+  Social Media Post Register and HubSpot Social, which this skill reads and
+  never writes. An audit, a dry run or
   "analysis only" writes nothing at all, not even locally.
 - **If asked to make the change itself**, say this skill is read-only, give
   the exact change to make and who makes it, and stop.
@@ -49,10 +51,16 @@ any di.net.au link against the rules in `di-li-audit/tag_status.py` before
 using it: a page whose slug says `archived` or `archive`, an A/B variant URL
 or a 404 is never linked.
 
+## Release status: v1, analysis only
+
+DI Marketing's review (Tejas Kamble, 01/10/2026) ships v1 of this pack as
+audit plus humaniser, strictly read-only. The plan is part of v1 as analysis: themes, angles, slots, owners and the engagement list. It drafts no post copy, and "write Tuesday" hands over to the post skill, which is in review mode.
+
 ## Input
 
-Read `~/.claude/di-linkedin/positioning.md`, `voice.md` and `log.md` if they
-exist. The plan should not repeat a theme from the last fortnight, and it
+Read `~/.claude/di-linkedin/positioning.md` and `voice.md`, and the posting
+history in the Social Media Post Register (Confluence, AME 1323008055) and
+HubSpot Social. The plan should not repeat a theme from the last fortnight, and it
 should not put a hook formula that flopped in `/di-li-audit` back on the
 schedule. Then ask for one thing only, because it is the thing that changes
 each week:
@@ -103,7 +111,8 @@ request on Monday rather than Thursday morning.
 ## When to post
 
 DI's audience is at a desk in Melbourne, Sydney and Brisbane. The default is
-**Tuesday to Thursday, 8:00-10:00am AEST**, with Monday afternoon and Friday
+**Tuesday and Thursday at 9:00am AEST**, two posts a week minimum, as in the
+Social Media Post Register,, with Monday afternoon and Friday
 morning as the second tier. Weekends are for a personal story or nothing.
 Perth and Auckland readers are a minority; do not shift the schedule for
 them.
@@ -139,9 +148,9 @@ are what makes DI's own post land.
 WEEK OF 6 OCT  (AEST)
 
 MON  engage only  (20 min, list below)  ·  brief Tejas: THU tile
-TUE  8:15am  MICHAEL  PROOF    #17 Time Anchor    - licensing proposal, 5 hrs to 20 min
+TUE  9:00am  MICHAEL  PROOF    #17 Time Anchor    - licensing proposal, 5 hrs to 20 min
 WED  engage only
-THU  8:00am  DI PAGE  TEACH    #21 Direct Value   - the Jira automation rule that closes stale tickets. Give it away.
+THU  9:00am  DI PAGE  TEACH    #21 Direct Value   - the Jira automation rule that closes stale tickets. Give it away.
 FRI  8:30am  MICHAEL  OPINION  #1  Contrarian     - why a 3-month AI pilot is a delay, not a pilot
 SAT  -
 SUN  4:00pm  MICHAEL  STORY    #9  Cold Open      - "can we just add 200 more licences"

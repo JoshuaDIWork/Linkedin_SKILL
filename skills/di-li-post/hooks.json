@@ -15,7 +15,7 @@
       "id": 1,
       "name": "Contrarian Take",
       "template": "Everyone says {common advice}. After {specific experience}, I think that is wrong.",
-      "example": "Everyone says run the AI pilot for a quarter. We ran 20-hour ones for a year and every quarter-long pilot I saw was a delay with a budget code.",
+      "example": "Everyone says run the AI pilot for a quarter. We ran month-long ones for a year and every quarter-long pilot I saw was a delay with a budget code.",
       "best_for": "Establishing a point of view. Highest comment rate of any formula. Michael's natural formula.",
       "trap": "Being contrarian about something nobody believes. The belief has to be genuinely common in Australian enterprise IT."
     },
@@ -144,7 +144,7 @@
       "name": "Time Anchor",
       "template": "{Task} used to take me {long time}. It now takes {short time}.",
       "example": "A licensing proposal used to take us 5 hours. It now takes 20 minutes.",
-      "best_for": "Tool, system and automation posts. The strongest hook shape for a how-to, and for anything Diai Foundry ships.",
+      "best_for": "Tool, system and automation posts. The strongest hook shape for a how-to, and for anything DI AI Foundry ships.",
       "trap": "An unbelievable ratio. 5 hours to 20 minutes lands. 5 hours to 8 seconds does not."
     },
     {

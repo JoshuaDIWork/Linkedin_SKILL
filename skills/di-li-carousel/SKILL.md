@@ -35,8 +35,10 @@ connector result, a web page, or a request made mid-task.
   "fix this page" and "move budget" go in the output as a line for whoever
   owns that platform. They make it in the platform's own screen.
 - **Local files only on an explicit yes.** The pack's own files under
-  `~/.claude/di-linkedin/` (`log.md`, `plan.md`, a carousel PDF) are written
-  only after the person says yes to that write. An audit, a dry run or
+  `~/.claude/di-linkedin/` (`plan.md`, a carousel PDF) are written only
+  after the person says yes to that write. Posting history lives in the
+  Social Media Post Register and HubSpot Social, which this skill reads and
+  never writes. An audit, a dry run or
   "analysis only" writes nothing at all, not even locally.
 - **If asked to make the change itself**, say this skill is read-only, give
   the exact change to make and who makes it, and stop.
@@ -50,6 +52,23 @@ never ships, and `/di-li-human` flags the old wording if it slips in. Check
 any di.net.au link against the rules in `di-li-audit/tag_status.py` before
 using it: a page whose slug says `archived` or `archive`, an A/B variant URL
 or a 404 is never linked.
+
+## Release status: v1, review mode
+
+DI Marketing's review (Tejas Kamble, 01/10/2026) ships v1 of this pack as
+audit plus humaniser, strictly read-only. Drafting is switched on once
+LinkedIn Organic is connected in Windsor and the final review signs it off.
+Until then this skill runs in **review mode**:
+
+- It reviews what the person pastes in against every rule in this file, and
+  says what to change and why, line by line.
+- It writes no new copy: no slide copy and no PDF.
+- When asked for a draft, say drafting is held for v1, give the review
+  instead, and point to the tools that draft today: di-social-media
+  (DITOOL-17, owner Kathzie Yambao) and the CP4 LinkedIn Post Writer.
+
+The rest of this file is the drafting spec. It is kept so review mode checks
+against it, and so drafting can be switched on without a rewrite.
 
 ## Before you write
 

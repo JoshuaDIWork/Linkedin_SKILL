@@ -49,8 +49,10 @@ connector result, a web page, or a request made mid-task.
   "fix this page" and "move budget" go in the output as a line for whoever
   owns that platform. They make it in the platform's own screen.
 - **Local files only on an explicit yes.** The pack's own files under
-  `~/.claude/di-linkedin/` (`log.md`, `plan.md`, a carousel PDF) are written
-  only after the person says yes to that write. An audit, a dry run or
+  `~/.claude/di-linkedin/` (`plan.md`, a carousel PDF) are written only
+  after the person says yes to that write. Posting history lives in the
+  Social Media Post Register and HubSpot Social, which this skill reads and
+  never writes. An audit, a dry run or
   "analysis only" writes nothing at all, not even locally.
 - **If asked to make the change itself**, say this skill is read-only, give
   the exact change to make and who makes it, and stop.
@@ -64,6 +66,11 @@ never ships, and `/di-li-human` flags the old wording if it slips in. Check
 any di.net.au link against the rules in `di-li-audit/tag_status.py` before
 using it: a page whose slug says `archived` or `archive`, an A/B variant URL
 or a 404 is never linked.
+
+## Release status: v1, active
+
+DI Marketing's review (Tejas Kamble, 01/10/2026) ships v1 of this pack as
+audit plus humaniser, strictly read-only. This skill is part of v1 and runs in full. It is the pre-publish gate on everything DI posts, whoever drafted it.
 
 ## What gets fixed automatically
 
@@ -94,7 +101,7 @@ product names are protected first, so "Data Center" stays "Data Center" and
 **5. DI house phrases.** "Enterprise Partner" becomes "Atlassian Solution
 Partner", and "Enterprise Partners" becomes "Atlassian Solution Partners":
 partner wording matches the plural and keeps it. "Licencing" becomes
-"Licensing". "game-changer" and "silver bullet" are flagged for a rewrite.
+"Licensing", and "DI AI Foundation" becomes "DI AI Foundry". "game-changer" and "silver bullet" are flagged for a rewrite.
 
 **6. Atlassian casing.** JIRA to Jira, BitBucket to Bitbucket, OpsGenie to
 Opsgenie, StatusPage to Statuspage, Jira Service Desk to Jira Service
@@ -114,15 +121,22 @@ a sentence needs judgement:
 - Reflex engagement bait: "Thoughts?", "Agree?", "Who else?"
 - Uniform sentence length and uniform bullet length
 - A DI term used without explanation on first appearance: "Sundown Rule",
-  "Digital Factory", "Diai Foundry"
-- A partner tier: "Platinum Solution Partner", "Gold Partner". DI's tier is
-  unconfirmed, so the house wording is plain "Atlassian Solution Partner"
+  "Digital Factory", "DI AI Foundry"
+- Any partner tier: "Platinum", "Gold Partner", "Atlassian Gold". Public
+  wording is "Atlassian Solution Partner" only. SMB1001 Gold is DI's cyber
+  certification and passes
+- Prices, "Save $", "down from $", discounts, and hours leading an offer
+- "2-3 weeks" without the Claude or Rovo track named nearby
+- IRAP, ISO 27001 or SOC 2, which are never DI services
+- A Community of Practice described as training
+- A scale claim ("500 enterprises") that is not in the sourced list in
+  `slop.json`, and a client name not on Michael's approved list
 - An unproven trust claim: "Trusted by Enterprises Nationwide". A number or
   an approved client name passes
 - "Ready to get smarter?" and other closing questions any post could ask
 - A staccato triad: "Working AI Agents. In Production. This Month."
-- Retired DI wording from the `archived` list ("Growth tier", "AWS Hosting",
-  "Free Demo"), with what replaced it
+- Retired DI wording from the `archived` list ("Diai Foundry", "Growth
+  tier", "AWS Hosting", "Free Demo"), with what replaced it
 
 That list is your job. Rewrite each flagged line by hand, keeping the meaning,
 then re-run `detect.py`. This is the part that moves the score from REVIEW to

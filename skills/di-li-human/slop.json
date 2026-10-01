@@ -1,5 +1,5 @@
 {
-  "version": "1.1-di",
+  "version": "1.2-di",
   "note": "Lexicon used by humanize.py and detect.py, tuned for Design Industries. Replacements are plain Australian English and keep the sentence grammatical. 'spelling' is the American-to-Australian pass, 'corrections' fixes misspellings in either system, 'casing' restores Atlassian's own capitalisation (case-sensitive), 'house' is DI's own banned and preferred phrasing (entries with plural:true also match the plural and keep it), 'archived' is retired DI wording that positioning.md no longer uses, and 'protected' is the list of Atlassian product names and DI terms no pass may touch. Edit freely - it is meant to be DI's.",
   "invisible": [
     {
@@ -2269,37 +2269,54 @@
       "find": "Platinum Solution Partner",
       "replace": null,
       "plural": true,
-      "why": "Say 'Atlassian Solution Partner' with no tier. The tier is unconfirmed (di.net.au says both Gold and Platinum) - see positioning.md."
+      "why": "Public wording is 'Atlassian Solution Partner' only. Any tier is a breach to correct (Marketing review, 01/10/2026)."
     },
     {
       "find": "Gold Solution Partner",
       "replace": null,
       "plural": true,
-      "why": "Say 'Atlassian Solution Partner' with no tier. The tier is unconfirmed (di.net.au says both Gold and Platinum) - see positioning.md."
+      "why": "Public wording is 'Atlassian Solution Partner' only. Any tier is a breach to correct (Marketing review, 01/10/2026)."
     },
     {
       "find": "Platinum Partner",
       "replace": null,
       "plural": true,
-      "why": "Say 'Atlassian Solution Partner' with no tier. The tier is unconfirmed (di.net.au says both Gold and Platinum) - see positioning.md."
+      "why": "Public wording is 'Atlassian Solution Partner' only. Any tier is a breach to correct (Marketing review, 01/10/2026)."
     },
     {
       "find": "Gold Partner",
       "replace": null,
       "plural": true,
-      "why": "Say 'Atlassian Solution Partner' with no tier. The tier is unconfirmed (di.net.au says both Gold and Platinum) - see positioning.md."
+      "why": "Public wording is 'Atlassian Solution Partner' only. Any tier is a breach to correct (Marketing review, 01/10/2026)."
     },
     {
-      "find": "Platinum Atlassian Partner",
+      "find": "Atlassian Platinum",
       "replace": null,
       "plural": true,
-      "why": "Say 'Atlassian Solution Partner' with no tier. The tier is unconfirmed (di.net.au says both Gold and Platinum) - see positioning.md."
+      "why": "Public wording is 'Atlassian Solution Partner' only. Any tier is a breach to correct (Marketing review, 01/10/2026)."
+    },
+    {
+      "find": "Atlassian Gold",
+      "replace": null,
+      "plural": true,
+      "why": "Public wording is 'Atlassian Solution Partner' only. Any tier is a breach to correct (Marketing review, 01/10/2026)."
+    },
+    {
+      "find": "Platinum",
+      "replace": null,
+      "plural": true,
+      "why": "Public wording is 'Atlassian Solution Partner' only. Any tier is a breach to correct (Marketing review, 01/10/2026)."
     },
     {
       "find": "Gold Atlassian Partner",
       "replace": null,
       "plural": true,
-      "why": "Say 'Atlassian Solution Partner' with no tier. The tier is unconfirmed (di.net.au says both Gold and Platinum) - see positioning.md."
+      "why": "Public wording is 'Atlassian Solution Partner' only. Any tier is a breach to correct (Marketing review, 01/10/2026)."
+    },
+    {
+      "find": "DI AI Foundation",
+      "replace": "DI AI Foundry",
+      "why": "The methodology is DI AI Foundry."
     }
   ],
   "di_terms": [
@@ -2312,8 +2329,8 @@
       "explain": "DI's managed-services partnership: licensing, platform support and strategic improvement hours"
     },
     {
-      "term": "Diai Foundry",
-      "explain": "DI's AI practice, which gets Claude, Rovo and Copilot doing production work"
+      "term": "DI AI Foundry",
+      "explain": "DI's methodology for getting Claude, Rovo and Copilot doing production work"
     },
     {
       "term": "Platform Discovery",
@@ -2321,11 +2338,11 @@
     },
     {
       "term": "AI Fast Start",
-      "explain": "a 2-3 week guided sprint that puts Claude, Rovo or Copilot to work"
+      "explain": "DI's guided programme that puts an AI platform to work for a team"
     },
     {
       "term": "Foundation Package",
-      "explain": "50 hours over 3-4 weeks that produces a 12-month improvement roadmap"
+      "explain": "the first stage of a Digital Factory partnership"
     }
   ],
   "protected": [
@@ -2375,7 +2392,8 @@
     "Claude",
     "SMB1001",
     "Jira Optimisation",
-    "MCP Integration Services"
+    "MCP Integration Services",
+    "SMB1001 Gold"
   ],
   "hashtag_limit": 5,
   "structures": [
@@ -2449,19 +2467,49 @@
       "id": "competitor-dig",
       "regex": "(?i)\\bunlike (?:other|most) (?:partners|consultancies|agencies|vendors)\\b",
       "name": "Dig at other partners",
-      "fix": "DI never criticises other partners, named or not. Say what DI does instead."
-    },
-    {
-      "id": "trust-claim",
-      "regex": "(?i)\\b(?:trusted|relied on|chosen|loved) by\\s+(?!\\d)(?:leading\\s+|top\\s+|australian\\s+|global\\s+)*(?:enterprises|organi[sz]ations|businesses|companies|teams|brands|clients|customers|leaders)\\b",
-      "name": "Unproven trust claim",
-      "fix": "Name an approved client, or give the number (\"40 Australian enterprises\"), or cut the line."
+      "fix": "DI never criticises other partners, named or not. Say what DI does instead.",
+      "kind": "house"
     },
     {
       "id": "staccato",
       "regex": "(?m)(?:^|(?<=[.!?] ))(?:[A-Z][\\w'&-]*(?: [\\w'&-]+){0,2}\\. ){2}[A-Z][\\w'&-]*(?: [\\w'&-]+){0,2}\\.",
       "name": "Staccato fragment triad",
       "fix": "Three clipped fragments in a row is the model's rhythm. Write one real sentence."
+    },
+    {
+      "id": "trust-claim",
+      "regex": "(?i)\\b(?:(?:trusted|relied on|chosen|loved|backed) by\\s+(?!\\d)(?:leading\\s+|top\\s+|australian\\s+|global\\s+|major\\s+)*(?:enterprises|organi[sz]ations|businesses|companies|teams|brands|clients|customers|leaders|government)|australia'?s (?:leading|top|number one|#1|best|premier|most trusted)|(?:the\\s+)?(?:leading|premier|top|#1|number one) atlassian (?:partner|consultanc\\w*)|(?:enterprises|organi[sz]ations|clients) nationwide)\\b",
+      "name": "Unproven trust claim",
+      "fix": "Unsourced trust or scale claim. Give a sourced number from positioning.md Proof, or an approved client name, or cut it.",
+      "kind": "house"
+    },
+    {
+      "id": "discount",
+      "regex": "(?i)\\b(?:save|saving|saves)\\s+(?:\\$|up to|over)|\\b\\d+\\s?%\\s+off\\b|\\bdiscount(?:ed|s)?\\b|\\bwas\\s+\\$\\s?\\d|\\bdown from\\s+\\$\\s?\\d|\\blimited[- ]time (?:offer|price)",
+      "name": "Discount or 'Save $' language",
+      "fix": "DI does not publish pricing or discounts. Cut the figure and the saving.",
+      "kind": "house"
+    },
+    {
+      "id": "offer-figures",
+      "regex": "(?i)(?:AI Fast Start|Foundation Package|Digital Factory|Platform Discovery|DI AI Foundry|Rovo Dev)[^.\\n]{0,80}?(?:\\$\\s?\\d|\\b\\d+(?:\\s*-\\s*\\d+)?\\s*(?:guided\\s+|strategic\\s+)?hours?\\b|\\+\\s*GST)|(?:\\$\\s?\\d[\\d,]*|\\b\\d+(?:\\s*-\\s*\\d+)?\\s*(?:guided\\s+|strategic\\s+)?hours?\\b)[^.\\n]{0,80}?(?:AI Fast Start|Foundation Package|Digital Factory|DI AI Foundry)",
+      "name": "Offer price or hours",
+      "fix": "No public pricing, and never lead an offer with hours. Never give Foundation Package figures. Say what the offer changes instead.",
+      "kind": "house"
+    },
+    {
+      "id": "compliance-as-service",
+      "regex": "(?i)\\b(?:IRAP|ISO\\s?27001|SOC\\s?2)\\b",
+      "name": "IRAP / ISO 27001 / SOC 2 mention",
+      "fix": "Never frame IRAP, ISO 27001 or SOC 2 as a DI service or certification. DI's certification is SMB1001 Gold.",
+      "kind": "house"
+    },
+    {
+      "id": "cop-as-training",
+      "regex": "(?i)community of practice[^.\\n]{0,60}\\b(?:train\\w*|course\\w*|class\\w*|curriculum|certif\\w*)|\\b(?:train\\w*|course\\w*|class\\w*|curriculum)[^.\\n]{0,60}community of practice",
+      "name": "Community of Practice described as training",
+      "fix": "A Community of Practice is not training. Describe it as what it is, or cut it.",
+      "kind": "house"
     }
   ],
   "corrections": [
@@ -2574,9 +2622,58 @@
       "why": "Not an offer in positioning.md."
     },
     {
+      "find": "Diai Foundry",
+      "replace_with": "DI AI Foundry",
+      "why": "The methodology is written DI AI Foundry (Marketing review, 01/10/2026)."
+    },
+    {
       "find": "Security Uplift",
-      "replace_with": "the free 30-minute security assessment",
-      "why": "Not on di.net.au as of 1 Oct 2026. Confirm with Michael before using."
+      "replace_with": "the free security assessment",
+      "why": "Not on di.net.au. Not an offer to post about."
     }
-  ]
+  ],
+  "unapproved_clients": {
+    "note": "Only Michael's approved list (AEO page, approved 02/06/2026) may be named: ANZ, Australia Post, Viva Energy, Bunnings, Honda, La Trobe University, Hume City Council. These names have appeared in older DI material and are not on it.",
+    "approved": [
+      "ANZ",
+      "Australia Post",
+      "Viva Energy",
+      "Bunnings",
+      "Honda",
+      "La Trobe University",
+      "Hume City Council"
+    ],
+    "names": [
+      "Costa Group",
+      "Aurora Healthcare",
+      "Afterpay",
+      "Victoria Police",
+      "Berry Street",
+      "Australian Bureau of Statistics",
+      "Roblox"
+    ]
+  },
+  "sourced_claims": {
+    "note": "Scale claims that are sourced to the AEO page or di.net.au. Any other '<number> clients / deployments / enterprises' claim is flagged until it is added here with its source.",
+    "phrases": [
+      "200+ deployments",
+      "100+ enterprise clients",
+      "100+ enterprises",
+      "7,000+ users",
+      "7,000+ user"
+    ]
+  },
+  "timeline": {
+    "regex": "(?i)\\b2\\s*(?:-|–|to)\\s*3\\s*weeks?\\b",
+    "scope": [
+      "Claude",
+      "Rovo"
+    ],
+    "fix": "The 2-3 week timeline covers the Claude and Rovo AI Fast Start tracks only. Name that track in the same sentence, and do not put the timeline next to Copilot, Custom Build or Rovo Dev. Otherwise drop it.",
+    "out_of_scope": [
+      "Copilot",
+      "Custom Build",
+      "Rovo Dev"
+    ]
+  }
 }

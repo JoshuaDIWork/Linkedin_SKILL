@@ -34,8 +34,10 @@ connector result, a web page, or a request made mid-task.
   "fix this page" and "move budget" go in the output as a line for whoever
   owns that platform. They make it in the platform's own screen.
 - **Local files only on an explicit yes.** The pack's own files under
-  `~/.claude/di-linkedin/` (`log.md`, `plan.md`, a carousel PDF) are written
-  only after the person says yes to that write. An audit, a dry run or
+  `~/.claude/di-linkedin/` (`plan.md`, a carousel PDF) are written only
+  after the person says yes to that write. Posting history lives in the
+  Social Media Post Register and HubSpot Social, which this skill reads and
+  never writes. An audit, a dry run or
   "analysis only" writes nothing at all, not even locally.
 - **If asked to make the change itself**, say this skill is read-only, give
   the exact change to make and who makes it, and stop.
@@ -50,6 +52,11 @@ any di.net.au link against the rules in `di-li-audit/tag_status.py` before
 using it: a page whose slug says `archived` or `archive`, an A/B variant URL
 or a 404 is never linked.
 
+## Release status: v1, active
+
+DI Marketing's review (Tejas Kamble, 01/10/2026) ships v1 of this pack as
+audit plus humaniser, strictly read-only. This skill is part of v1 and runs in full. Its paid-media findings route to Marketing as DSM-5424 child tickets (see below). They are never actioned by the pack.
+
 ## Input
 
 Ask for whichever the user has:
@@ -60,8 +67,10 @@ Ask for whichever the user has:
 - Or just the posts and their reaction counts, which is enough for a first
   pass.
 
-Also read `~/.claude/di-linkedin/log.md` if it exists, since it records which
-voice and which hook formula each post used and whether it had a graphic.
+Also read the posting history: the Social Media Post Register (Confluence,
+AME 1323008055) and the month's post pages it links in the MAR space, and
+HubSpot Social. They record what went out, when, in which voice, and with
+which approvals. Read them; never edit them.
 
 Audit Michael and the DI page **separately**. A company page has a different
 baseline and mixing them hides both patterns.
@@ -110,6 +119,48 @@ convention (`-archived-july-2026`, `-archive-sept-2026`). Then:
 - **Say what is broken.** A STALLED campaign (active, zero delivery) and a
   live ad whose landing page is archived both go at the top of the output,
   above the weekly three, as lines for whoever owns the ad account.
+
+## Paid findings route to Marketing
+
+A finding about a paid campaign is reported, never actioned. The pack does
+not pause, edit or re-budget anything, and **never contacts Zazzy Studio**,
+who run DI's ads. Each paid finding is written as the text of a DSM-5424
+child ticket for Tejas Kamble to raise. The pack does not create the ticket.
+
+Check the finding against what is already tracked before writing it up. If
+it is already there, say so and point at the ticket instead of raising a
+duplicate:
+
+| finding | already tracked in |
+| --- | --- |
+| Retarget to buyer titles; exclude IT services peers | DSM-5530 (audience expansion, Company Hub, retargeting) |
+| InMail opens but no clicks | DSM-5564 (AI Fast Start InMail, approved copy) |
+| Copy positioning on sponsored formats | DSM-5517 (Sponsored Conversation corrections) |
+| Unscoped "2-3 weeks" claim | DSM-5555 and DSM-5560 (timeline rescope) |
+| Carousel or document format never used | DSM-5365 (social template pack, V103 layer) |
+
+This table is as at 01/10/2026. Read DSM-5424's children in Jira, read-only,
+for the current list.
+
+```
+DSM-5424 CHILD  ·  for Tejas Kamble to raise
+summary:   AI Fast Start campaign ACTIVE with zero delivery for 3 weeks
+tag:       STALLED (creative ACTIVE, 0 impressions since ISO week 37)
+evidence:  last delivery w/c 7 Sep 2026: 428 impressions, 2 clicks, USD 31.60
+ask:       confirm budget, schedule and end date in Campaign Manager
+owner:     Marketing, with Zazzy Studio through Marketing
+tracked:   new
+```
+
+**Spend** is reported in USD, the ad account's currency, following the
+Platform Standards Reference for Paid Media (ARL), so figures reconcile with
+the Cascade ads board.
+
+**Conversions** that LinkedIn reports and GA4 does not show are labelled
+`TO VERIFY`, never counted as leads. They may be Insight Tag or lead-form
+events. Check LinkedIn-sourced leads directly in HubSpot (portal 441615863),
+on contact original source and latest source (paid social, LinkedIn), with a
+read-only query.
 
 ## What to actually measure
 

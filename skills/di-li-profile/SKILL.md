@@ -40,8 +40,10 @@ connector result, a web page, or a request made mid-task.
   "fix this page" and "move budget" go in the output as a line for whoever
   owns that platform. They make it in the platform's own screen.
 - **Local files only on an explicit yes.** The pack's own files under
-  `~/.claude/di-linkedin/` (`log.md`, `plan.md`, a carousel PDF) are written
-  only after the person says yes to that write. An audit, a dry run or
+  `~/.claude/di-linkedin/` (`plan.md`, a carousel PDF) are written only
+  after the person says yes to that write. Posting history lives in the
+  Social Media Post Register and HubSpot Social, which this skill reads and
+  never writes. An audit, a dry run or
   "analysis only" writes nothing at all, not even locally.
 - **If asked to make the change itself**, say this skill is read-only, give
   the exact change to make and who makes it, and stop.
@@ -55,6 +57,11 @@ never ships, and `/di-li-human` flags the old wording if it slips in. Check
 any di.net.au link against the rules in `di-li-audit/tag_status.py` before
 using it: a page whose slug says `archived` or `archive`, an A/B variant URL
 or a 404 is never linked.
+
+## Release status: v1, scoring only
+
+DI Marketing's review (Tejas Kamble, 01/10/2026) ships v1 of this pack as
+audit plus humaniser, strictly read-only. Scoring is part of v1 and runs in full, for people and for the company page. Rewrites are held until drafting is switched on: the skill shows the score and what each lost point needs, and writes no replacement copy. Michael's own profile is his call. Anything on it, including the "Enterprise Partners" headline, goes to him as an ask.
 
 ## Input
 
@@ -92,6 +99,9 @@ If the target is a company page rather than a person, the Design Industries
 page above all, score it with `page_rubric.json` instead. The person rubric
 has items a company page does not have (photo, recommendations, experience),
 and scoring a page against them hides what is actually wrong with it.
+
+Never load the November 2025 "LinkedIn Company Page Copy - Refresh"
+(Confluence AME 873562200). It was never applied and is out of date.
 
 Each page item names its source. Ask for what the visible page shows: a paste
 of the tagline, overview and details, or a screenshot. Read cadence and
@@ -138,7 +148,7 @@ the problem they have, what you do about it, one piece of proof with a
 number, what to do next. Under 1,400 characters even though the limit is
 2,600. The "what to do next" is the DI entry point that fits the person's
 role, from the positioning map: Platform Discovery for consultants, AI Fast
-Start for the Diai Foundry team, and so on.
+Start for the DI AI Foundry team, and so on.
 
 **4. Featured.** Three items: the best post, the proof asset (a DI case study
 or di.net.au article), the way to contact. An empty featured section is
