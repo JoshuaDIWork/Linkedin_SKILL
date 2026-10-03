@@ -79,6 +79,15 @@ however obvious the fix looks.
 | `linkedin_organic` | organic page posts, followers, page views | ad spend, audience of ads |
 | `googleanalytics4` | what LinkedIn traffic did on di.net.au | anything on LinkedIn itself |
 
+**Read campaign-group status before campaign status.** In the LinkedIn API
+a campaign group is what Campaign Manager calls a "Campaign", and a campaign
+is an "Ad set". DI pauses at group level, and a paused group leaves every
+campaign under it showing ACTIVE. So every `linkedin` pull that reports
+`campaign_status` also asks for `campaign_group_name`, `campaign_group_id`
+and `campaign_group_status` in the same call, or in a second group-level pull
+passed to `tag_status.py --groups`. Without it an ACTIVE campaign with no
+delivery looks broken when someone paused it on purpose.
+
 Say which one you read. Paid and organic are different accounts in Windsor
 and the first is often connected without the second: if `linkedin_organic`
 returns "no accounts configured", say that the organic half is unread and
@@ -94,6 +103,7 @@ anything:
 ```bash
 python3 tag_status.py export.csv --summary
 python3 tag_status.py windsor.json --json > tagged.json
+python3 tag_status.py campaigns.json --groups groups.json   # group status from a separate pull
 ```
 
 It tags each post, ad, campaign and page LIVE, STALLED, PAUSED, ENDED,
@@ -110,6 +120,15 @@ convention (`-archived-july-2026`, `-archive-sept-2026`). Then:
 - **Say what is broken.** A STALLED campaign (active, zero delivery) and a
   live ad whose landing page is archived both go at the top of the output,
   above the weekly three, as lines for whoever owns the ad account.
+- **A paused group is not broken.** A campaign that is ACTIVE under a PAUSED
+  campaign group tags PAUSED. Report it once in the status list as "paused
+  at campaign-group level", not at the top. If the group status could not be
+  read, `tag_status.py` warns on the STALLED row: say the group status is
+  unread rather than calling the campaign broken.
+- **Last delivery is the last day with impressions above zero**, taken from a
+  daily pull (`date`, `impressions`) as the platform dates it. Do not infer it
+  from the end of the window or from a status change, and do not shift it
+  across time zones.
 
 ## What to actually measure
 
