@@ -2321,7 +2321,7 @@
     },
     {
       "term": "AI Fast Start",
-      "explain": "a 2-3 week guided sprint that puts Claude, Rovo or Copilot to work"
+      "explain": "DI's programme that puts Claude, Rovo, Microsoft Copilot or a custom MCP build to work"
     },
     {
       "term": "Foundation Package",
@@ -2577,6 +2577,16 @@
       "find": "Security Uplift",
       "replace_with": "the free 30-minute security assessment",
       "why": "Not on di.net.au as of 1 Oct 2026. Confirm with Michael before using."
+    },
+    {
+      "find": "Business track",
+      "replace_with": "the Claude or Rovo track",
+      "why": "AI Fast Start tracks are named by platform since 3 Oct 2026: Claude, Rovo, Microsoft Copilot, MCP/Custom Build."
+    },
+    {
+      "find": "six tracks",
+      "replace_with": "four tracks",
+      "why": "AI Fast Start has four tracks since 3 Oct 2026: Claude, Rovo, Microsoft Copilot, MCP/Custom Build."
     }
   ]
 }

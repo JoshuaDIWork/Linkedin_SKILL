@@ -26,8 +26,8 @@ at the answers.
 - **Who I am writing for:** IT leaders, Heads of Digital, CTOs and CIOs at
   mid-to-large Australian organisations, and the Atlassian admins who keep
   their platforms alive.
-- **What I sell:** Platform Discovery, AI Fast Start (Claude, Rovo or
-  Copilot), MCP Integration Services, Digital Factory partnerships, Diai
+- **What I sell:** Platform Discovery, AI Fast Start (four tracks: Claude, Rovo,
+  Microsoft Copilot, MCP/Custom Build), MCP Integration Services, Digital Factory partnerships, Diai
   Foundry. Details and the CTA map are in
   `positioning.md`.
 
@@ -85,5 +85,5 @@ disagree, `positioning.md` wins and this list is out of date.
 - Melbourne team (headcount CONFIRM in `positioning.md`)
 - Sundown Rule: same-day response to every client enquiry
 - SMB1001 Gold certified
-- AI Fast Start: 2-3 weeks, from $5,000 + GST
+- AI Fast Start, Claude or Rovo track: 2-3 weeks. No price.
 -

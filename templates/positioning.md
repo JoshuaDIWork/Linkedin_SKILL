@@ -5,7 +5,9 @@ Design Industries, as every skill in this pack understands it. Copy this to
 both. Edit this file when an offer changes, a price moves or a client gives
 permission to be named. Do not edit it inside a draft.
 
-**As of 1 October 2026.** Rebuilt from the AEO page at
+**As of 3 October 2026.** On 3 October AI Fast Start was rewritten as one
+programme with four tracks and no public pricing. The rest was rebuilt on
+1 October from the AEO page at
 [di.net.au/llm-info](https://di.net.au/llm-info) (DI's company information
 page for AI assistants and search) and the di.net.au service pages. Both were
 read through search-engine copies, because di.net.au could not be reached
@@ -83,9 +85,11 @@ the two in one sentence.
 | --- | --- | --- | --- | --- |
 | **Platform Discovery** | Free assessment of an Atlassian environment: current-state review, highest-value quick wins, a roadmap. No obligation, no pitch. | Free. 45 minutes on one page, 1-2 hours on another. | LIVE. Length CONFIRM. | /platform-discovery, /atlassian-implementation, /digital-factory |
 | **Free security assessment** | A 30-minute review of an organisation's Atlassian security posture and its gaps | Free, 30 minutes | LIVE | /atlassian-guard |
-| **Claude AI Fast Start** | Turns Claude licences into team capability: prompts per team, purpose-built projects, a reusable skills library, token budgets, an asset register, governance, hands-on workshops, a 90-day expansion roadmap | 2-3 weeks. Business track $5,000 + GST, down from $7,000. | LIVE | /claude-ai-fast-start |
-| **Rovo AI Fast Start** | Rovo doing real work for 2-3 business teams | 2-3 weeks, about 20 guided hours. Business track $5,000 + GST. Rovo Dev technical track $8,000 + GST, 20-24 hours. | LIVE | /rovo-ai-fast-start |
-| **Copilot AI Fast Start** | Production Microsoft Copilot agents | 2-3 weeks, 25 hours. $6,500 + GST, down from $8,750. | LIVE | /microsoft-copilot-ai-fast-start |
+| **AI Fast Start** | One programme with four tracks, one per platform: Claude, Rovo, Microsoft Copilot and MCP/Custom Build. The tracks are listed in the next four rows. | No public pricing. Never name a price. | LIVE | see each track |
+| AI Fast Start: **Claude track** | Turns Claude licences into team capability: prompts per team, purpose-built projects, a reusable skills library, token budgets, an asset register, governance, hands-on workshops, a 90-day expansion roadmap | 2-3 weeks | LIVE | /claude-ai-fast-start |
+| AI Fast Start: **Rovo track** | Rovo doing real work for 2-3 business teams | 2-3 weeks | LIVE | /rovo-ai-fast-start |
+| AI Fast Start: **Microsoft Copilot track** | Production Microsoft Copilot agents | No timeline in copy. "2-3 weeks" is Claude and Rovo only. | LIVE | /microsoft-copilot-ai-fast-start |
+| AI Fast Start: **MCP/Custom Build track** | AI agents connected to the client's own systems and data through MCP, or built to order | No timeline in copy. "2-3 weeks" is Claude and Rovo only. | LIVE | page CONFIRM |
 | **Diai Foundry** | DI's AI practice. Activates Claude, Rovo and Copilot, builds skills and agents on the client's platform, and lifts cyber and AI readiness. | Through AI Fast Start and project work | LIVE. The site also writes "DI AI Foundry". Which spelling is canonical is CONFIRM. | home page, blog |
 | **MCP Integration Services** | Designs, builds and governs Model Context Protocol servers that give AI agents safe, structured access to enterprise data, with role-based access and audit logging built in | Quoted | LIVE | /mcp-integration-services |
 | **Rovo implementation and agents** | Rovo set-up, Rovo agent development, Rovo Dev | Quoted | LIVE | /atlassian-rovo-implementation, /rovo-agent-development, /rovo-dev |
@@ -104,7 +108,7 @@ one sentence. Name a price only when the price is the point of the post.
 | --- | --- | --- |
 | Atlassian platform, configuration, sprawl, admin pain | **Platform Discovery** | "We run a free Platform Discovery. Fastest way to see what is working, what is not, and what to fix first." |
 | Jira that has slowed down or sprawled | **Jira Optimisation**, entered through Platform Discovery | "Platform Discovery is free, and it is where every Jira clean-up we run starts." |
-| AI, Claude, Rovo, Copilot, agents | **AI Fast Start** for the platform the post is about | "Our AI Fast Start gets a team from switched-on to doing real work in 2-3 weeks." |
+| AI, Claude, Rovo, Copilot, agents | **AI Fast Start**, the track for the platform the post is about | Claude or Rovo: "Our AI Fast Start gets a team from switched-on to doing real work in 2-3 weeks." Copilot, MCP or a custom build: "Our AI Fast Start has a track for exactly this." No timeline for those two. |
 | Connecting AI to enterprise data | **MCP Integration Services** | "This is the work we do with MCP: AI agents with access to the data, and an audit trail of every call." |
 | Security, compliance, risk, audit | **Free security assessment** | "We run a free 30-minute review of your Atlassian security posture." |
 | Ongoing support, team performance, process | **Digital Factory**, starting with the Foundation Package | "This is what Digital Factory is for: support, licensing and improvement hours with a team that already knows your environment." |
@@ -187,6 +191,12 @@ Three to five per post, at the bottom, drawn from here. Never a wall.
   `utm_medium=paid` for ads and `utm_medium=social` for organic, so GA4 can
   add it up.
 
+- **AI Fast Start has four tracks**: Claude, Rovo, Microsoft Copilot and
+  MCP/Custom Build. Never "six tracks", never a "Business track" or a
+  "Technical track", and no price for any track. Only the Claude and Rovo
+  tracks carry "2-3 weeks". The technical tracks (Rovo Dev among them) are
+  out of copy until DI confirms where they sit in the restructure.
+
 ## People
 
 | who | role in this pack |
@@ -204,7 +214,8 @@ entry there.
 
 | archived | replaced by | where it was |
 | --- | --- | --- |
-| AI Fast Start as one offer, "20 hours, $5,000" | The platform tracks above: Claude, Rovo or Copilot, 2-3 weeks, from $5,000 + GST | the previous positioning.md |
+| AI Fast Start as one offer, "20 hours, $5,000" | AI Fast Start, one programme with four tracks: Claude, Rovo, Microsoft Copilot, MCP/Custom Build | positioning.md before 1 Oct 2026 |
+| AI Fast Start as "six tracks", Business and Technical tracks, and every track price ($5,000, $6,500, $7,000, $8,000, $8,750 + GST) | The four tracks above, no public pricing | positioning.md v1.2, 1 Oct 2026 |
 | Digital Factory "Growth through Enterprise" tiers | Starter, Professional, Enterprise | the previous positioning.md |
 | "AWS Hosting", "Ad Hoc Atlassian Support", "Continual Improvement for ROI", "Atlassian Managed Services" | Digital Factory | LinkedIn page About text and showcase pages |
 | "Free Atlassian Platform Health Check", "Free Demo" | Platform Discovery, or the free security assessment | August 2025 LinkedIn ads |

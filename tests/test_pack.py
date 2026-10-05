@@ -172,6 +172,46 @@ check("a plain page URL with no status is LIVE",
 check("a row with nothing in it is UNKNOWN", T({"impressions": 10})["status"] == "UNKNOWN")
 check("ACTIVE campaign with no delivery is STALLED",
       T({"campaign_status": "ACTIVE", "impressions_last_14d": 0})["status"] == "STALLED")
+r = T({"campaign_status": "ACTIVE", "impressions_last_14d": 0})
+check("STALLED campaign with no group status is warned about",
+      "campaign_group_status" in r["warning"], str(r))
+
+# DSM-5426: AI Fast Start, campaign group paused 08/09, campaign underneath ACTIVE.
+r = T({"campaign_group_status": "PAUSED", "campaign_status": "ACTIVE", "impressions_last_14d": 0})
+check("ACTIVE campaign in a PAUSED group is PAUSED, not STALLED", r["status"] == "PAUSED", str(r))
+check("the reason names the group status", "campaign_group_status" in r["reason"], str(r))
+rows = [{"campaign": "AI Fast Start", "campaign_group_name": "AI Fast Start",
+         "campaign_status": "ACTIVE", "impressions_last_14d": 0}]
+groups = [{"campaign_group_name": "AI Fast Start", "campaign_group_status": "PAUSED"}]
+tag_status.inherit_group_status(rows, groups)
+check("group status is inherited from a campaign-group pull",
+      T(rows[0])["status"] == "PAUSED", str(rows[0]))
+rows = [{"campaign_group_id": "123", "campaign_group_status": "PAUSED"},
+        {"campaign_group_id": "123", "campaign_status": "ACTIVE", "impressions_last_14d": 0}]
+tag_status.inherit_group_status(rows)
+check("group status is inherited from another row in the same input",
+      T(rows[1])["status"] == "PAUSED", str(rows[1]))
+check("ACTIVE campaign in an ACTIVE group with no delivery is still STALLED",
+      T({"campaign_group_status": "ACTIVE", "campaign_status": "ACTIVE",
+         "impressions_last_14d": 0})["status"] == "STALLED")
+
+# --------------------------------------------------------------------------
+section("AI Fast Start: four tracks, no public pricing")
+
+pos_text = open(os.path.join(ROOT, "templates", "positioning.md"), encoding="utf-8").read()
+offers = pos_text.split("## What we sell", 1)[1].split("## Which offer a post earns", 1)[0]
+fast = [l for l in offers.splitlines() if "AI Fast Start" in l]
+for track in ("Claude track", "Rovo track", "Microsoft Copilot track", "MCP/Custom Build track"):
+    check(f"positioning.md lists the {track}", any(track in l for l in fast))
+check("no AI Fast Start row names a price", not any("$" in l for l in fast), str(fast))
+check("no live row names a Technical or Business track",
+      not re.search(r"(?i)(technical|business) track", offers))
+for l in fast:
+    if "Copilot track" in l or "MCP/Custom Build track" in l:
+        check(f"no 2-3 week timeline on: {l[:45]}", "No timeline" in l and "2-3 weeks |" not in l)
+_, rep_ = clean("Our AI Fast Start has six tracks, starting with the Business track.\n")
+check("'six tracks' and 'Business track' flagged as archived",
+      "six tracks" in flag_names(rep_) and "Business track" in flag_names(rep_), flag_names(rep_))
 
 # --------------------------------------------------------------------------
 section("Pack structure and the read-only rule")

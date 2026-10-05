@@ -25,11 +25,18 @@ Rules, in order
   1. The row's own URL, slug or title decides first. DI retires pages by
      renaming the slug ("-archived-july-2026", "-archive-sept-2026"), so a
      page with that slug is ARCHIVED whatever the platform status says.
-  2. Otherwise the platform status decides (creative_status, campaign_status,
-     campaign_group_status, status, state). When a row has several, the most
-     retired wins: an ACTIVE creative in a COMPLETED campaign is ENDED. A page
+  2. Otherwise the platform status decides, read from the top of the
+     hierarchy down: campaign_group_status first, then campaign_status, then
+     creative_status, status, state. When a row has several, the most
+     retired wins: an ACTIVE creative in a COMPLETED campaign is ENDED, and
+     an ACTIVE campaign in a PAUSED campaign group is PAUSED. Pausing a group
+     leaves the campaigns under it showing ACTIVE, so a campaign row with no
+     group status is filled in from any row in the input (or --groups file)
+     that carries the same campaign_group_id or campaign_group_name. A page
      with a URL or title and no status or archive marker is LIVE.
-  3. An active item with zero impressions in the window is STALLED.
+  3. An active item with zero impressions in the window is STALLED. A
+     STALLED campaign whose group status was never read gets a warning,
+     because it may be a paused group rather than a broken campaign.
   4. A LIVE item whose landing page is archived, a variant or a 404 stays
      LIVE and gets a warning, because money is being spent sending people
      somewhere retired.
@@ -39,6 +46,9 @@ Usage
   python3 tag_status.py windsor.json --json        # rows with status added
   python3 tag_status.py export.csv --live-only     # only LIVE rows
   python3 tag_status.py export.csv --summary       # counts per status
+  python3 tag_status.py campaigns.json --groups groups.json
+                                                   # add group status from a
+                                                   # campaign-group pull
 """
 
 import argparse
@@ -54,7 +64,10 @@ DEAD_RE = re.compile(r"(?i)(?:^|/)404(?:$|[/?#])")
 # Fields that name the item itself, and fields that point somewhere else.
 SELF_FIELDS = ("url", "page_url", "page", "slug", "landing_page_path", "title", "page_title", "name")
 POINTER_FIELDS = ("landing_page", "share_landing_page", "cta_url", "destination_url")
-STATUS_FIELDS = ("creative_status", "campaign_status", "campaign_group_status", "status", "state")
+# Top of the hierarchy first. In the LinkedIn API a campaign group is what
+# Campaign Manager calls a "Campaign", and a campaign is an "Ad set".
+STATUS_FIELDS = ("campaign_group_status", "campaign_status", "creative_status", "status", "state")
+GROUP_KEYS = ("campaign_group_id", "campaign_group_name", "campaign_group")
 DELIVERY_FIELDS = ("impressions_last_14d", "impressions_window", "delivered")
 
 PLATFORM = {
@@ -114,6 +127,12 @@ def tag(row):
             best = (s, f"{f} = {raw}")
     if best:
         status, reason = best
+        under = row.get("campaign_status")
+        if reason.startswith("campaign_group_status") and under not in (None, "") \
+                and PLATFORM.get(str(under).strip().upper()) != status:
+            reason += f" (campaign_status = {under} underneath)"
+        if row.get("campaign_group_status_from") and "campaign_group_status" in reason:
+            reason += f", group status matched on {row['campaign_group_status_from']}"
     elif any(row.get(f) for f in SELF_FIELDS):
         # A page in a report, with no platform status and no archive marker
         # in its URL or title, is live as far as anything can tell.
@@ -132,13 +151,41 @@ def tag(row):
 
     # 4. Where a live item sends people.
     warning = ""
-    if status in ("LIVE", "STALLED"):
+    if status == "STALLED" and row.get("campaign_status") not in (None, "") \
+            and row.get("campaign_group_status") in (None, ""):
+        warning = ("campaign_group_status not read: a paused campaign group leaves its "
+                   "campaigns ACTIVE. Read the group status before reporting this as broken")
+    if status in ("LIVE", "STALLED") and not warning:
         for f in POINTER_FIELDS:
             s = _url_status(row.get(f))
             if s:
                 warning = f"{f} points at a {s.lower()} page: {row[f]}"
                 break
     return {"status": status, "reason": reason, "warning": warning}
+
+
+def inherit_group_status(rows, groups=()):
+    """Copy campaign_group_status onto rows that lack it, matched by group id
+    or name, from any row in rows or groups that carries it. Rows are changed
+    in place, and an inherited value is marked in campaign_group_status_from."""
+    known = {}
+    for r in list(groups) + list(rows):
+        st = r.get("campaign_group_status")
+        if st in (None, ""):
+            continue
+        for k in GROUP_KEYS:
+            if r.get(k) not in (None, ""):
+                known.setdefault((k, str(r[k]).strip()), st)
+    for r in rows:
+        if r.get("campaign_group_status") not in (None, ""):
+            continue
+        for k in GROUP_KEYS:
+            hit = known.get((k, str(r.get(k, "")).strip()))
+            if hit is not None:
+                r["campaign_group_status"] = hit
+                r["campaign_group_status_from"] = k
+                break
+    return rows
 
 
 def load(path):
@@ -166,9 +213,10 @@ def main():
     ap.add_argument("--json", action="store_true", help="emit rows with status, reason, warning added")
     ap.add_argument("--live-only", action="store_true", help="keep LIVE and STALLED rows only")
     ap.add_argument("--summary", action="store_true", help="print counts per status")
+    ap.add_argument("--groups", help="CSV or JSON campaign-group pull to read group status from")
     args = ap.parse_args()
 
-    rows = load(args.input)
+    rows = inherit_group_status(load(args.input), load(args.groups) if args.groups else ())
     out = []
     for r in rows:
         t = tag(r)
